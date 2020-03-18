@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        @font-face {
+            font-family: "Buenos Aires";
+            src: url("../../assets/css/fonts/Buenos Aires/BuenosAires-Regular.otf") format("opentype");
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .mapboxgl-popup-content {
+            width: 350px;
+            font: 12px/20px 'Buenos Aires';
+        }
+        
+        h2 {
+            font-family: "Buenos Aires";
+            text-align: center;
+        }
+        
+        .legend {
+            background-color: #fff;
+            border-radius: 3px;
+            max-height: 500px;
+            width: 200px;
+            bottom: 30px;
+            overflow-y: auto;
+            /*width: 500px;*/
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+            font: 13px/20px 'Buenos Aires';
+            padding: 10px;
+            position: absolute;
+            right: 10px;
+            z-index: 1;
+        }
+        
+        .legend::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        
+        .legend::-webkit-scrollbar-thumb {
+            background-color: #283869;
+        }
+        
+        .legend::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+        
+        .legend h4 {
+            margin: 0 0 20px;
+        }
+        
+        .legend div span {
+            border-radius: 50%;
+            display: inline-block;
+            height: 10px;
+            margin-right: 5px;
+            width: 10px;
+        }
+        
+        .toolTip {
+            position: absolute;
+            display: none;
+            min-width: 80px;
+            height: auto;
+            background: none repeat scroll 0 0 #ffffff;
+            border: 1px solid #6F257F;
+            padding: 14px;
+            text-align: center;
+            font-family: "Buenos Aires"
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    <div class='legend' id='legend'>
+        <p><b>Categories (click on circles)</b></p>
+    </div>
+    <h2 style="color:white;position:relative;">+3500 Tech searches classified</h2>
+
+    <script>
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoiamF2aWVyc2d2aXN1YWwiLCJhIjoiY2s3dWU2Y29yMDJ4eDNmbzJ2OXFsd2h6aiJ9.G6cR1RTnB3eLwgnXUQdERA';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/dark-v10',
+            center: [2.349014, 46.864716], //latitude; longitude
+            zoom: 5.5,
+            pitch: 50, // inclination
+            bearing: 0 // 
+
+        });
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
+        map.on('load', function() {
+
+            $.get('data/map_coord_class_prob.json', function(data_in) {
+                console.log(data_in)
+                var layers = data_in["layers"]
+                var colors = data_in["colors"]
+
+
+                document.createElement('h1');
+                //Create legend
+                for (i = 0; i < layers.length; i++) {
+                    var layer = layers[i];
+                    var color = colors[i];
+                    var item = document.createElement('div');
+                    item.id = layers[i];
+                    var key = document.createElement('span');
+                    key.className = 'legend-key';
+                    key.id = layers[i];
+                    key.style.backgroundColor = color;
+
+
+                    var value = document.createElement('span');
+                    value.setAttribute("style", "width:60px");
+                    value.setAttribute("pointer-events", "none");
+                    value.innerHTML = layer;
+                    item.appendChild(key);
+                    item.appendChild(value);
+                    legend.appendChild(item);
+                };
+
+                //data_in.features.forEach(function(feature) {
+                map.addLayer({
+                    "id": "points",
+                    "type": "circle",
+                    "source": {
+                        type: "geojson",
+                        data: "data/map_coord_class_prob.json"
+                    },
+                    paint: {
+                        // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
+                        'circle-color': data_in["circlecol"],
+                        'circle-radius': {
+                            //'base': 1.75,
+                            'stops': [
+                                [12, 5],
+                                [22, 180]
+                            ]
+                        }
+                    },
+                    "filter": ["!=", "location", "All"]
+
+                });
+                //console.log(legend)
+                //console.log(data_in["layers"].filter(function(value) {return value != "All";}))
+                legend.addEventListener('click', function(e) {
+                    var location = e.target.id;
+                    console.log(e.target.id)
+                        // update the map
+                    document.getElementById(location).style.opacity = "1";
+
+                    if (location != "All") {
+
+                        map.setFilter('points', ['==', "location", location]);
+
+
+                    } else {
+                        map.setFilter('points', ['!=', "location", location]);
+                    }
+
+                    var opac_arr = data_in["layers"].filter(function(value) {
+                            return value != location;
+                        })
+                        //console.log(opac_arr)
+                    for (var i = 0; i < opac_arr.length; i++) {
+                        //console.log(opac_arr[i])
+                        document.getElementById(opac_arr[i]).style.opacity = "0.5";
+                    }
+                    //document.getElementById(location).style.opacity = "0.3";
+                });
+                //});
+
+            });
+
+            function chart(data, descrip) {
+                data = JSON.parse(data);
+
+                console.log(data)
+                    //var feature = d.feature;
+                    //var data = feature.properties.data;
+                console.log(d3.max(data, function(d) {
+                    return +d.prob
+                }))
+                var search = "Search: " + descrip
+
+                var title = "Prob. of classification"
+
+                var width = 300;
+                var height = 80;
+                var margin = {
+                    left: 20,
+                    right: 15,
+                    top: 40,
+                    bottom: 5
+                };
+                var parse = d3.timeParse("%m");
+                var format = d3.timeFormat("%b");
+
+                var div = d3.create("div")
+                var svg = div.append("svg")
+
+                .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom);
+                var g = svg.append("g")
+                    .attr("transform", "translate(" + [margin.left, margin.top] + ")");
+
+                var y = d3.scaleLinear()
+                    .domain([0, d3.max(data, function(d) {
+                        return +d.prob
+                    })])
+                    .range([height, 0]);
+
+                var yAxis = d3.axisLeft()
+                    .ticks(4)
+                    .scale(y);
+                g.append("g").call(yAxis);
+                var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+
+                var x = d3.scaleBand()
+                    .domain(data.map(function(d) {
+                        return d.category;
+                    }))
+                    .range([0, width]);
+
+                var xAxis = d3.axisBottom()
+                    .scale(x).tickSize(3)
+
+
+                g.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis)
+                    .selectAll("text")
+                    //.attr("text-anchor", "end")
+                    .attr("transform", "rotate(0)")
+                    .attr("font-size", "0")
+
+                var rects = g.selectAll("rect")
+                    .data(data)
+                    .enter()
+                    .append("rect")
+                    .attr("y", height)
+                    .attr("height", 0)
+                    .attr("width", x.bandwidth() - 2)
+                    .attr("x", function(d, i) {
+                        return x(d.category);
+                    })
+                    .attr("fill", "#1fdea6")
+                    .on("mousemove", function(d) {
+                        tooltip
+                            .style("left", d3.event.pageX - 50 + "px")
+                            .style("top", d3.event.pageY - 70 + "px")
+                            .style("display", "inline-block")
+                            .html(d.category + "</br>Prob: " + d.prob + " %");
+                    })
+                    .on("mouseout", function(d) {
+                        tooltip.style("display", "none");
+                    }).transition()
+                    .attr("height", function(d) {
+                        return height - y(d.prob);
+                    })
+                    .attr("y", function(d) {
+                        return y(d.prob);
+                    }).duration(1000)
+
+
+                var title = svg.append("text")
+                    .style("font-size", "14px")
+                    .text(title)
+                    .attr("x", width / 2 + margin.left)
+                    .attr("y", 40)
+                    .attr("text-anchor", "middle");
+
+                var title2 = svg.append("text")
+                    .style("font-size", "18px")
+                    .text(search)
+                    .attr("x", width / 2 + margin.left)
+                    .attr("y", 20)
+                    .attr("text-anchor", "middle");
+
+                return div.node();
+
+            }
+
+            // When a click event occurs on a feature in the places layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            map.on('click', 'points', function(e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var description = e.features[0].properties.id;
+                var classif = e.features[0].properties.location;
+
+                // Ensure that if the map is zoomed out such that multiple
+                // copies of the feature are visible, the popup appears
+                // over the copy being pointed to.
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setDOMContent(chart(e.features[0].properties.data_hist, description))
+                    .addTo(map);
+            });
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'places', function() {
+                map.getCanvas().style.cursor = 'default';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function() {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+    </script>
+</body>
+
+</html>

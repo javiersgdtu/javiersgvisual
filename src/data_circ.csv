@@ -1,0 +1,16 @@
+root,node,index
+Consultation,Triage,23
+Consultation,Waiting area Specialist,73
+Frontdesk,Waiting area triage,159
+Frontdesk,Waiting area consultation,100
+Specialist,Frontdesk,100
+Specialist,Waiting area Specialist,15
+Triage,Consultation,100
+Triage,Waiting area consultation,105
+Triage,Waiting area Specialist,141
+Waiting area consultation,Consultation,67
+Waiting area consultation,Triage,15
+Waiting area Specialist,Triage,65
+Waiting area Specialist,Specialist,100
+Waiting area triage,Consultation,20
+Waiting area triage,Triage,188

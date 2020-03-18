@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scrollama: Sticky Overlay Example</title>
+    <meta name="description" content="Scrollama: Sticky Overlay Example">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #scrolly {
+            position: relative;
+            background-color: #FFFBE8;
+            padding: 1rem;
+            pointer-events: auto;
+        }
+        
+        article {
+            position: relative;
+            padding: 0;
+            max-width: 20rem;
+            margin: 0 auto;
+            pointer-events: none;
+        }
+        /*figure {
+            position: -webkit-sticky;
+            position: sticky;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            background-color: #8a8a8a;
+        }*/
+        
+        iframe {
+            background-color: #FFFBE8;
+            position: sticky;
+            overflow: hidden;
+            width: 100%;
+        }
+        /*figure p {
+            text-align: center;
+            padding: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -moz-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            font-weight: 900;
+            color: #fff;
+        }*/
+        
+        @font-face {
+            font-family: "San Francisco";
+            src: url("../font/SF-Compact-Text-Medium.otf") format("opentype");
+        }
+        
+        body {
+            background: #FFFBE8;
+        }
+        
+        .step {
+            margin: 0 auto 2rem auto;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0);
+            /*the last 0 sets the opacity*/
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step.is-active p {
+            background-color: rgba(255, 218, 151, 0.5);
+            /*#1fdea6;*/
+            color: #3b3b3b;
+            pointer-events: none;
+        }
+        
+        .step p {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 30px;
+            font-size: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+
+</head>
+
+<body style='font-family : "San Francisco";color: black'>
+
+    <main>
+
+        <section id='intro'>
+            <h1 class='intro__hed' align="center" style='font-size:46px'>San Francisco: City of Cinema</h1>
+            <p class='intro__dek' align="center">
+                Start scrolling
+            </p>
+        </section>
+
+        <section id='scrolly'>
+
+            <iframe id="infr1" src="" scrolling="no" frameBorder="0"></iframe>
+
+            <article>
+                <div class='step' data-step='1'>
+                    <p>San Francisco</br> Population: 883.305</br> aka: "The City"</p>
+                </div>
+                <div class='step' data-step='2'>
+                    <p>But also setting of more than 700 films and series</p>
+                </div>
+                <div class='step' data-step='3'>
+                    <p>This is the cinema history of San Francisco</p>
+                </div>
+                <div class='step' data-step='4'>
+                    <p>These are all the films and series tracked made in San Francisco along decades</p>
+                </div>
+                <div class='step' data-step='5'>
+                    <p>Each colour represents a decade</p>
+                </div>
+                <div class='step' data-step='6'>
+                    <p>The decade with more filming activity are the 90's</p>
+                </div>
+                <div class='step' data-step='7'>
+                    <p>Here the circle's size represents the number of SF city locations used</p>
+                </div>
+                <div class='step' data-step='8'>
+                    <p>Double click to zoom and explore decades</p>
+                </div>
+
+            </article>
+
+
+
+        </section>
+
+        <section id='outro'></section>
+    </main>
+
+    <script src='https://unpkg.com/d3@5.9.1/dist/d3.min.js'></script>
+    <script src='https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js'></script>
+    <script src='stickyfill.min.js'></script>
+    <script src='scrollama.min.js'></script>
+    <script>
+        // using d3 for convenience
+        var main = d3.select('main')
+        var scrolly = main.select('#scrolly');
+        var iframe = scrolly.select('iframe');
+        var article = scrolly.select('article');
+        var step = article.selectAll('.step');
+
+        // initialize the scrollama
+        var scroller = scrollama();
+
+        // generic window resize listener event
+        function handleResize() {
+            // 1. update height of step elements
+            var stepH = Math.floor(window.innerHeight * 0.75);
+            step.style('height', stepH + 'px');
+
+            var figureHeight = window.innerHeight / 2
+            var figureMarginTop = (window.innerHeight - figureHeight) / 2
+
+            iframe
+                .style('height', figureHeight + 'px')
+                .style('top', figureMarginTop + 'px');
+
+
+            // 3. tell scrollama to update new element dimensions
+            scroller.resize();
+        }
+
+        // scrollama event handlersindex.htmlindex.html
+        function handleStepEnter(response) {
+            console.log(response)
+                // response = { element, direction, index }
+
+            // add color to current step only
+            step.classed('is-active', function(d, i) {
+                return i === response.index;
+            })
+            console.log(response.index)
+            if (response.index <= 2) {
+                name_arr = '../scrolling_sf/pho_1/#slide-' + response.index
+            } else {
+                var aux = response.index - 3
+                name_arr = '../scrolling_sf/SanFrancisco st/#slide-' + aux
+            }
+            iframe.attr("src", name_arr)
+
+        }
+
+        function setupStickyfill() {
+            d3.selectAll('.sticky').each(function() {
+                Stickyfill.add(this);
+            });
+        }
+
+        function init() {
+            setupStickyfill();
+
+            // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+            handleResize();
+
+            // 2. setup the scroller passing options
+            // 		this will also initialize trigger observations
+            // 3. bind scrollama event handlers (this can be chained like below)
+            scroller.setup({
+                    step: '#scrolly article .step',
+                    offset: 0.7,
+                    debug: false,
+                })
+                .onStepEnter(handleStepEnter)
+
+            // setup resize event
+            window.addEventListener('resize', handleResize);
+        }
+
+        // kick things off
+        init();
+    </script>
+</body>
+
+</html>

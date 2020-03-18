@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Medical conditions at clinic</title>
+    <script type="text/javascript" src="../assets/js/d3.v4.min.js"></script>
+
+</head>
+<style>
+    body {
+        font: 10px sans-serif;
+        background: transparent url("../assets/img/d3_back.jpg") no-repeat fixed center center;
+        background-size: auto auto;
+    }
+    
+    select {
+        /*-webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 97% center;
+    background-repeat: no-repeat;*/
+        border: 1px solid #AAA;
+        color: #000;
+        font-size: inherit;
+        margin: 20px;
+        overflow: hidden;
+        padding: 5px 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 300px;
+    }
+    
+    .xAxis path,
+    .yAxis path,
+    .xAxis line,
+    .yAxis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+    
+    .dashline {
+        stroke-dasharray: 10, 3;
+        stroke: red;
+        stroke-width: 1px;
+    }
+    
+    .area {
+        fill: steelblue;
+        clip-path: url(#clip);
+    }
+    
+    .tooltip {
+        position: absolute;
+        text-align: center;
+        width: 50px;
+        height: 55px;
+        border: 0px;
+        border-radius: 8px;
+        background: lightblue;
+        pointer-events: none;
+        border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 100, 100, 0.4);
+        pointer-events: none;
+    }
+    
+    .zoom {
+        cursor: move;
+        fill: none;
+    }
+    
+    .wb-stl-special {
+        position: relative;
+        top: 20px;
+        left: 400px;
+    }
+</style>
+
+<body>
+    <script type="text/javascript">
+        var div = d3.select("body").append("div"),
+            margin = {
+                top: 20,
+                right: 20,
+                bottom: 30,
+                left: 50
+            },
+            width = 1200 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom,
+            margin2 = {
+                top: 430,
+                right: 20,
+                bottom: 30,
+                left: 40
+            },
+            height2 = 500 - margin2.top - margin2.bottom,
+            parseDate = d3.timeParse("%Y-%m-%d"),
+            FormatDate = d3.timeFormat("%B-%Y"),
+            svg = d3.select("body").append("svg").attr("width", width + margin.left + margin.right).attr("height",
+                height +
+                height2 + margin.top + margin.bottom + margin2.bottom).append("g").attr("transform", "translate(" +
+                margin.left + "," + margin.top + ")");
+        svg.append("defs").append("clipPath").attr("id", "clip").append("rect").attr("width", width).attr("height",
+            height);
+        var x = d3.scaleTime().range([0, width]),
+            x2 = d3.scaleTime().range([0, width]),
+            y = d3.scaleLinear().range([height, 0]),
+            y2 = d3.scaleLinear().range([height2, 0]),
+            xAxis = d3.axisBottom(x),
+            xAxis2 = d3.axisBottom(x2),
+            yAxis = d3.axisLeft(y),
+            tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0),
+            baseline = d3.line().x(function(c) {
+                return x(c.Date)
+            }).y(function(c) {
+                return 0 != c.Treshold ? y(c.Treshold) : 2 * height
+            }),
+            area = d3.area().curve(d3.curveMonotoneX).x(function(c) {
+                return x(c.Date)
+            }).y0(function(c) {
+                return y(c.n)
+            }).y1(height),
+            area2 = d3.area().x(function(c) {
+                return x2(c.Date)
+            }).y0(height2).y1(function(c) {
+                return y2(c.n)
+            }),
+            defs = svg.append("defs"),
+            greenGrad = defs.append("linearGradient").attr("id", "greenGrad").attr("x1", "0%").attr("y1", "100%").attr(
+                "x2",
+                "0%").attr("y2", "0%");
+        greenGrad.append("stop").attr("offset", "0%").attr("stop-color", "white");
+        greenGrad.append("stop").attr("offset", "75%").attr("stop-color", "green");
+        var redGrad = defs.append("linearGradient").attr("id", "redGrad").attr("x1", "0%").attr("y1", "100%").attr("x2",
+            "0%").attr("y2", "0%");
+        redGrad.append("stop").attr("offset", "0%").attr("stop-color", "white");
+        redGrad.append("stop").attr("offset", "100%").attr("stop-color", "red");
+        var dataFiltered = {},
+            dataNested = {};
+        d3.csv("MorbiditygRandom.csv", function(c, f) {
+            if (c) throw c;
+            f.forEach(function(a) {
+                a.Date = parseDate(a.Date);
+                a.Month = FormatDate(a.Date);
+                a.n = +a.n;
+                a.baseline = +a.baseline;
+                a.Treshold = +a.Treshold;
+                a.Disease = a.Disease
+            });
+            var e = d3.brushX().extent([
+                    [0, 0],
+                    [width, height2]
+                ]).on("brush end", function() {
+                    if (!d3.event.sourceEvent || "zoom" !== d3.event.sourceEvent.type) {
+                        var a = d3.event.selection || x2.range();
+                        x.domain(a.map(x2.invert, x2));
+                        d.select(".axis--x").call(xAxis);
+                        svg.select(".green_zoom").attr("d", area);
+                        svg.select(".red_zoom").attr("d",
+                            area);
+                        svg.selectAll("circle").attr("cx", function(a) {
+                            return x(a.Date)
+                        }).attr("cy", function(a) {
+                            return y(a.n)
+                        });
+                        svg.select(".zoom").call(l.transform, d3.zoomIdentity.scale(width / (a[1] - a[0]))
+                            .translate(-a[0],
+                                0))
+                    }
+                }),
+                l = d3.zoom().scaleExtent([1, Infinity]).translateExtent([
+                    [0, 0],
+                    [width, height]
+                ]).extent([
+                    [0, 0],
+                    [width, height]
+                ]).on("zoom", function() {
+                    if (!d3.event.sourceEvent || "brush" !== d3.event.sourceEvent.type) {
+                        var a = d3.event.transform;
+                        x.domain(a.rescaleX(x2).domain());
+                        d.select(".axis--x").call(xAxis);
+                        svg.select(".green_zoom").attr("d",
+                            area);
+                        svg.select(".red_zoom").attr("d", area);
+                        svg.selectAll("circle").attr("cx", function(a) {
+                            return x(a.Date)
+                        }).attr("cy", function(a) {
+                            return y(a.n)
+                        });
+                        g.select(".brush").call(e.move, x.range().map(a.invertX, a))
+                    }
+                }),
+                d = svg.append("g").attr("class", "focus"),
+                g = svg.append("g").attr("class", "context").attr("transform", "translate(0," + margin2.top +
+                    ")");
+            console.log(f);
+            var h = d3.nest().key(function(a) {
+                return a.Disease
+            }).entries(f);
+            console.log(h);
+            div.append("select").attr("id", "letiableSelect").on("change", function() {
+                var a =
+                    this.value,
+                    b = h.filter(function(b) {
+                        return b.key === a
+                    }),
+                    c = d3.max(b[0].values, function(a) {
+                        return a.n
+                    }),
+                    f = d3.max(b[0].values, function(a) {
+                        return a.Treshold
+                    }),
+                    e = [0, 0];
+                e = c > f ? [d3.min(b[0].values, function(a) {
+                    return a.n
+                }), c] : [d3.min(b[0].values, function(a) {
+                    return a.n
+                }), f];
+                y.domain(d3.extent(e));
+                y2.domain(d3.extent(e));
+                d3.min(b[0].values, function(a) {
+                        return a.Treshold
+                    }) >= d3.min(b[0].values, function(a) {
+                        return a.n
+                    }) ? m.datum(b[0].values).transition().duration(1E3).attr("d", baseline) : m.datum(
+                        0).transition()
+                    .duration(1E3).attr("d",
+                        baseline);
+                d.select(".axis--x").transition().duration(1E3).call(xAxis);
+                d.select(".axis--y").transition().duration(1E3).call(yAxis);
+                svg.selectAll("circle").data(b[0].values).transition().duration(1E3).attr("cx",
+                    function(a) {
+                        return x(a.Date)
+                    }).attr("cy", function(a) {
+                    return y(a.n)
+                });
+                t.data(b[0].values).transition().duration(1E3).attr("id", "clip-above").attr("width",
+                    width).attr(
+                    "height",
+                    function(a) {
+                        return y(a.Treshold)
+                    });
+                u.data(b[0].values).transition().duration(1E3).attr("id", "clip-below").attr("y",
+                    function(a) {
+                        return 0 !=
+                            a.Treshold ? y(a.Treshold) : 0
+                    }).attr("width", width).attr("height", height);
+                n.datum(b[0].values).transition().duration(1E3).attr("d", area).attr("class",
+                    "red_zoom");
+                p.datum(b[0].values).transition().duration(1E3).attr("d", area).attr("class",
+                    "green_zoom");
+                g.select(".area_sec").datum(b[0].values).transition().duration(1E3).attr("d", area2)
+            }).selectAll("option").data(h).enter().append("option").attr("value", function(a) {
+                return a.key
+            }).text(function(a) {
+                return a.key
+            });
+            var b = h.filter(function(a) {
+                return a.key ===
+                    d3.select("#letiableSelect").property("value")
+            });
+            console.log(b);
+            var q = d3.max(b[0].values, function(a) {
+                    return a.n
+                }),
+                r = d3.max(b[0].values, function(a) {
+                    return a.Treshold
+                }),
+                k = [0, 0];
+            k = q > r ? [d3.min(b[0].values, function(a) {
+                return a.n
+            }), q] : [d3.min(b[0].values, function(a) {
+                return a.n
+            }), r];
+            x.domain(d3.extent(b[0].values, function(a) {
+                return a.Date
+            }));
+            x2.domain(d3.extent(b[0].values, function(a) {
+                return a.Date
+            }));
+            y.domain(k);
+            y2.domain(k);
+            var t = defs.append("clipPath").data(b[0].values).attr("id", "clip-above").append("rect").attr(
+                    "width",
+                    width).attr("height", function(a) {
+                    return y(a.Treshold)
+                }),
+                u = defs.append("clipPath").data(b[0].values).attr("id", "clip-below").append("rect").attr("y",
+                    function(
+                        a) {
+                        if (0 != a.Treshold) return y(a.Treshold)
+                    }).attr("width", width).attr("height", height),
+                n = svg.append("path").datum(b[0].values).attr("clip-path", "url(#clip-above)").attr("d", area)
+                .attr(
+                    "class", "area red_zoom").style("fill", "url(#redGrad)"),
+                p = svg.append("path").datum(b[0].values).attr("clip-path", "url(#clip-below)").attr("d", area)
+                .attr(
+                    "class", "area green_zoom").style("fill",
+                    "url(#greenGrad)");
+            n.datum(b[0].values).attr("d", area).attr("class", "red_zoom");
+            p.datum(b[0].values).attr("d", area).attr("class", "green_zoom");
+            var m = svg.append("path").datum(b[0].values).attr("class", "dashline").attr("d", baseline);
+            svg.selectAll("circle").data(b[0].values).enter().append("circle").attr("stroke", "black").attr(
+                "fill",
+                "white").attr("r", 3.5).attr("cx", function(a) {
+                return x(a.Date)
+            }).attr("cy", function(a) {
+                return y(a.n)
+            }).on("mouseover", function(a, b) {
+                d3.select(this).transition().duration(100).attr("r",
+                    10).attr("fill", "orange").attr("stroke-dasharray", "10,3");
+                tooltip.transition().duration(200).style("opacity", .9);
+                tooltip.html(a.n + "<br/>patients. Date: " + FormatDate(a.Date)).style("left", d3.event
+                    .pageX + 5 +
+                    "px").style("top", d3.event.pageY - 28 + "px")
+            }).on("mouseout", function(a) {
+                d3.select(this).transition().duration(500).attr("r", 3.5).attr("fill", "white").attr(
+                    "stroke-dasharray",
+                    "100,30");
+                tooltip.transition().duration(500).style("opacity", 0)
+            });
+            d.append("g").attr("class", "axis axis--x").attr("transform",
+                "translate(0," + height + ")").call(xAxis);
+            d.append("text").attr("transform", "rotate(0)").attr("x", width - margin.right).attr("y", height +
+                margin
+                .bottom).style("font-size", "16px").style("font-family", "Karla").text("Date");
+            d.append("g").attr("class", "axis axis--y").call(yAxis);
+            d.append("text").attr("transform", "rotate(-90)").attr("y", 12).attr("dy", ".71em").style(
+                "text-anchor",
+                "end").style("font-size", "11px").text("Number of patients");
+            g.append("path").datum(b[0].values).attr("transform", "translate(0,60)").attr("class",
+                "area area_sec").attr("d", area2);
+            g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + (height2 + margin2
+                .bottom +
+                margin.bottom) + ")").call(xAxis2);
+            g.append("g").attr("class", "brush").call(e).attr("transform", "translate(0,60)").call(e.move, x
+                .range());
+            svg.append("rect").attr("class", "zoom").attr("width", width).attr("height", height).attr(
+                "transform",
+                "translate(" + margin.left + "," + margin.top + ")").call(l)
+        });
+        d3.select("body").append("div").attr("class", "wb-stl-special").append("text").text(
+            "Time Chart of Patients medical conditions");
+        d3.select("body").append("div").attr("class", "wb-stl-special").style("left", "180px").style("font-size",
+                "15px")
+            .append("text").text(
+                "Monitoring of medical conditions. Every condition has a different threshold. Above it, the condition is considered viral. Made with D3"
+            );
+    </script>
+</body>
+
+</html>
