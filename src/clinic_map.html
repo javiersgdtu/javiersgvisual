@@ -869,7 +869,7 @@
     for (i = 0; i < d3.selectAll("path")._groups[0].length; i++) array_loc = [].concat($jscomp.arrayFromIterable(
         array_loc), [d3.selectAll("path")._groups[0][i].id]);
     console.log(array_loc);
-    d3.csv("map.csv", function(a) {
+    d3.csv("/assets/data/map.csv", function(a) {
         a.value = +a.value;
         array_vl = [].concat($jscomp.arrayFromIterable(array_vl), [a.value]);
         d3.select("#" + a.location).attr("text", a.value)

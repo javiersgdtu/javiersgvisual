@@ -157,7 +157,7 @@
         redGrad.append("stop").attr("offset", "100%").attr("stop-color", "red");
         var dataFiltered = {},
             dataNested = {};
-        d3.csv("MorbiditygRandom.csv", function(c, f) {
+        d3.csv("/assets/data/MorbiditygRandom.csv", function(c, f) {
             if (c) throw c;
             f.forEach(function(a) {
                 a.Date = parseDate(a.Date);
