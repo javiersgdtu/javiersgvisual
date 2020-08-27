@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src='./../assets/js/d3.v4.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="./../assets/css/got-style.css">
+
+</head>
+
+<body>
+    <div class="title">
+        <p>Game of Thrones</p>
+    </div>
+    <div id="sticky" style="left:80px;">
+        <input type="checkbox" class="deaths">
+        <label for="deaths">Spoilers</label>
+
+    </div>
+
+    <div id="container"> </div>
+
+
+    <script>
+        var margin = {
+                top: 40,
+                right: 40,
+                bottom: 50,
+                left: 60
+            },
+            width = (document.body.clientWidth * 2) - margin.left - margin.right,
+            height = (window.innerHeight * 1.5) - margin.top - margin.bottom,
+            widthsticky = document.body.clientWidth - margin.left - margin.right,
+            widthmenu = 500 - margin.left - margin.right,
+            heightmenu = 125 - margin.top - margin.bottom;
+        console.log(window.innerHeight)
+
+        var svg = d3.select("#container")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right + 50) //We add some extra spacing
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
+
+        var svg2 = d3.select("#sticky")
+            .style("top", ((height / 2) + 200) + "px")
+            .append("svg")
+            .attr("width", widthsticky)
+            .attr("height", heightmenu + margin.top + margin.bottom)
+            .append("g")
+            /* .attr("transform",
+                 "translate(" + margin.left + ",0)");*/
+
+        var tooltip = d3
+            .select("#container")
+            .append("div")
+            .style("z-index", 100)
+            .style("opacity", 0)
+            .attr("class", "tooltip")
+            .attr("id", "main_tooltip")
+            .style("position", "absolute")
+            .style("background-color", "white")
+            .style("border", "solid")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px");
+
+        var title_tooltip = d3
+            .select("#container")
+            .append("div")
+            .style("z-index", 50)
+            .style("opacity", 0)
+            .style("position", "absolute")
+            .attr("class", "tooltip")
+            .style("background-color", "white")
+            .style("font-family", "got")
+
+
+        d3.json("./../assets/data/got.json", function(datagot) {
+
+            //console.log(datagot);
+            var xscale = d3.scaleLinear()
+                .domain([0, d3.max(datagot, function(a) {
+                    return a.episode;
+                })])
+                .range([0, width]),
+
+                xscale_aux = d3.scaleBand()
+                .domain([1, 2, 3, 4, 5, 6, 7, 8])
+                .range([0, width])
+                .padding(0.05),
+
+                xscalemenu = d3.scaleBand()
+                .domain([1, 2, 3, 4, 5, 6, 7, 8])
+                .range([0, widthmenu])
+                .padding(0.05);
+
+            var yscale = d3.scaleLinear()
+                .domain([0, d3.max(datagot, function(a) {
+                    return a.nbcharacters;
+                })])
+                .range([0, height / 2]);
+
+
+            var x_axismenu = d3.axisBottom(xscalemenu);
+
+            svg2.append("g")
+                .attr("transform", "translate(0, " + (heightmenu) + ")")
+                .call(x_axismenu)
+                // .style("font-family", "got");
+
+            svg.append("g")
+                .selectAll("dot")
+                .data(datagot).enter()
+                .append("circle")
+                .attr("id", function(d) {
+                    return "circle" + d.death;
+                })
+                .attr("offset", 0)
+
+            .attr("r", function(d) {
+
+                    return d.time_in_episode;
+                })
+                .attr("cx", function(d) {
+                    //console.log(d.season);
+                    return xscale(d.episode);
+                })
+                .attr("cy", function(d) {
+                    return yscale(d.position);
+
+
+                })
+                .attr("fill", function(d) {
+                    return d.colour
+                })
+                .on("mouseover", handleMouseOver)
+                .on("mouseout", handleMouseOut);
+
+            svg2.append("g")
+                .selectAll("rect")
+                .data(datagot)
+                .enter()
+                .append("rect")
+                .attr("width", xscalemenu.bandwidth())
+                .attr("height", heightmenu)
+                .attr("fill", function(d) {
+                    return "lightblue"
+                })
+                .attr("opacity", 0.5)
+                .attr("x", function(d) {
+                    return xscalemenu(d.seasonNum)
+                })
+                .on("mouseover", function(d) {
+                    var colour = d3.select(this).attr("fill") != "#ffb3b3" ? "yellow" : "#ffb3b3"
+
+                    d3.select(this).attr("fill", colour)
+                        .style("cursor", "pointer")
+                })
+                .on("mouseout", function(d) {
+                    var colour = d3.select(this).attr("fill") != "#ffb3b3" ? "lightblue" : "#ffb3b3"
+                    d3.select(this).attr("fill", colour)
+                })
+
+            .on("click", function(d) {
+                d3.selectAll("rect")
+                    .attr("fill", "lightblue");
+                d3.select(this)
+                    .attr("fill", "#ffb3b3")
+                    .attr("clicked", 1);
+
+                d3.select("#container").select("svg").transition()
+                    .duration(750)
+                    .attr("transform", "translate(-" + xscale_aux(d.seasonNum) + ",0)");
+                var offset = xscale_aux(d.seasonNum)
+
+                d3.selectAll("circle").attr("offset", offset)
+                    /*console.log(offset)
+                    console.log(d3.mouse(this)[0])
+                    console.log(d3.mouse(this)[0] - xscale_aux(d.seasonNum))*/
+
+
+            })
+            svg2.append("text")
+                .attr("transform",
+                    "translate(" + (widthmenu / 2) + " ," +
+                    (heightmenu + margin.top) + ")")
+                .style("text-anchor", "middle")
+                .text("Season");
+
+
+            // Handle Mouse Over
+            function handleMouseOver(d) {
+                //console.log(d3.select(this).attr("offset"))
+                title_tooltip
+                    .style("opacity", 1)
+                    .html(d.episodeTitle)
+                    .style("left", d3.mouse(this)[0] - d3.select(this).attr("offset") + "px")
+                    .style("top", (height / 2 + margin.bottom) + "px");
+
+                tooltip
+                    .style("opacity", 1)
+                    .html("<b>" + d.name + "</b><br> Time in episode: " +
+                        d.time_in_episode + " min<br> Family: " + "<strong style = 'color:" + d.colour + "'>" +
+                        d.family + " </strong>")
+                    .style("left", (d3.mouse(this)[0] + 70 - d3.select(this).attr("offset")) + "px")
+                    .style("top", (d3.mouse(this)[1]) + "px")
+                d3.selectAll("circle").transition()
+                    .duration(200).attr("opacity", 0.2);
+
+                d3.select(this).transition()
+                    .duration(200).attr("opacity", 1)
+                    // .attr("fill", "blue");
+            };
+
+            // Handle Mouse Out
+            function handleMouseOut(d) {
+                title_tooltip
+                    .style("opacity", 0);
+                tooltip
+                    .style("opacity", 0);
+
+                d3.select(this).transition()
+                    .duration(200)
+                    .attr("fill", function(d) {
+                        return d.colour
+                    });
+
+                d3.selectAll("circle").transition()
+                    .duration(200).attr("opacity", 1)
+            };
+
+            //update
+            function update() {
+                var seles = d3.selectAll("#circle0")
+
+                if (d3.select(this).property("checked")) {
+                    // console.log("cheche")
+                    seles.transition()
+                        .duration(200).remove() //style("opacity", 0);
+                } else {
+                    svg.append("g")
+                        .selectAll("dot")
+                        .data(datagot).enter()
+                        .append("circle")
+                        .attr("id", function(d) {
+                            return "circle" + d.death;
+                        })
+
+                    .attr("r", function(d) {
+                            return d.time_in_episode;
+                        })
+                        .attr("cx", function(d) {
+                            //console.log(d.season);
+                            //return xscale(d.season);
+                            return xscale(d.episode);
+                        })
+                        .attr("cy", function(d) {
+                            return yscale(d.position);
+                        })
+                        .attr("fill", function(d) {
+                            return d.colour
+                        })
+                        .on("mouseover", handleMouseOver)
+                        .on("mouseout", handleMouseOut);
+                };
+            };
+            d3.select(".deaths").on("change", update)
+
+        });
+    </script>
+</body>
+
+</html>

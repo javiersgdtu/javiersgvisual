@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'got';
+    src: url('fonts/Game of Thrones.ttf');
+}
+
+br {
+    content: "";
+    margin: 1em;
+    display: block;
+    font-size: 24%;
+}
+
+.title {
+    text-align: center;
+    font-family: "got";
+    font-size: 200%;
+    z-index: 25;
+}
+
+#container {
+    position: relative;
+    overflow: scroll;
+    overflow-y: hidden;
+    z-index: 50;
+}
+
+.deaths {
+    text-align: center;
+    vertical-align: middle;
+    /* top: 25%;
+    left: 25%;*/
+}
+
+#container::-webkit-scrollbar {
+    display: none;
+}
+
+#sticky {
+    position: absolute;
+    top: 100;
+    z-index: 100;
+    font-family: "got";
+}
