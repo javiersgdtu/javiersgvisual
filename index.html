@@ -91,7 +91,6 @@
                             border-radius: 6px;
                             padding: 15px 15px;
                             position: absolute;
-                            z-index: 1;
                             bottom: 120%;
                             left: 50%;
                             margin-left: -60px;
@@ -116,6 +115,7 @@
                         
                         .centered.box:hover {
                             opacity: 1;
+                            z-index: 100;
                         }
                         
                         .centered.text {
@@ -185,7 +185,7 @@
                                     Photoshop.</span>
 
                             </div>
-                            <div class="centered box" style="left: 40%;" onclick="location.href='src/DateChangeBrush.html';">
+                            <div class="centered box" style="left: 60%;" onclick="location.href='src/DateChangeBrush.html';">
                                 <img class="imagest" src="assets/img/scatter_icon.JPG" style="width:100%;">
                                 <span class="tooltip  tooltiptext"> Area chart intended to monitor medical conditions.
                                     Every condition
@@ -193,19 +193,27 @@
                                     Above it, the condition is considered viral.</span>
 
                             </div>
-                            <div class="centered box" style="left: 60%;" onclick="location.href='src/clinic_map.html';">
+                            <div class="centered box" style="left: 80%;" onclick="location.href='src/clinic_map.html';">
                                 <img class="imagest" src="assets/img/map_icon.JPG" style="width:100%;">
                                 <span class="tooltip  tooltiptext"> Heat Map of a refugee camp. Made to monitor where
                                     patients that
                                     checked in the clinics came from. Made with D3 and Inkscape. </span>
 
                             </div>
-                            <div class="centered box" style="left: 80%;" onclick="location.href='src/chord.html';">
+                            <div class="centered box" style="left: 50%; top:53%" onclick="location.href='src/chord.html';">
                                 <img class="imagest" src="assets/img/chord_icon.JPG" style="width:100%;">
                                 <span class="tooltip  tooltiptext">Chord graph representing the different stages in
                                     which patients
                                     stay in a clinic. Intended to monitor the flow of patiens in a hospital. Made with
                                     D3
+                                </span>
+
+                            </div>
+
+                            <div class="centered box" style="left: 40%" onclick="location.href='src/gameofthrones.html';">
+                                <img class="imagest" src="assets/img/gotViz.JPG" style="width:100%;">
+                                <span class="tooltip  tooltiptext">Visualizing the 8 seasons of Game of Thrones. Made
+                                    with D3 for a Webinar.
                                 </span>
 
                             </div>
