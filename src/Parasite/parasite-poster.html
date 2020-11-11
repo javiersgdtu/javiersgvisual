@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Parasite</title>
+
+    <link rel="stylesheet" href="main.css">
+    <script src="https://d3js.org/d3-format.v1.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+    <script src="https://d3js.org/d3-ease.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+    <script src="https://d3js.org/d3-timer.v1.min.js"></script>
+    <script src="https://d3js.org/d3-transition.v1.min.js"></script>
+
+    <!--script src="https://d3js.org/d3.v5.min.js"></script-->
+
+    </link>
+</head>
+
+<body>
+
+    <div class="img-overlay-wrap">
+        <img srcset="images/parasite-resized.jpg" alt="Parasite">
+
+        <!--srcset="image_3x.jpg 3x, image_2x.jpg 2x, image_1-5.jpg 1.5x"-->
+        <svg width="0" height="0">
+            <defs>
+                <clipPath id="poster">
+                    <ellipse ry=" 48" rx="48" cy="1098.4962" cx="713.63586" id="path3751-5-8-3-5-1-0-1" />
+                    <ellipse ry=" 48" rx="48" cy="99.131371" cx="923.58502" id="path3751" />
+                    <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="44.302792" x="617.02332"
+                        height="102.39527" width="212.39307" id="rect6000" />
+                    <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="46.305637" x="359.92737"
+                        height="102.39527" width="212.39307" id="rect6000-1" />
+                    <ellipse ry="48" rx="  48" cy="101.52998" cx="274.21854" id="path3751-5" />
+                    <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="203.56873" x="531.32465"
+                        height="102.39527" width="212.39307" id="rect6000-1-1" />
+                    <ellipse ry="48" rx="  48" cy="260.27371" cx="445.60938" id="path3751-5-8" />
+                    <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="357.46423" x="319.46051"
+                        height="102.39527" width="212.39307" id="rect6000-1-1-7" />
+                    <ellipse ry="48" rx="  48" cy="412.33902" cx="233.75319" id="path3751-5-8-3" />
+                    <ellipse ry="48" rx="  48" cy="410.59464" cx="610.1153" id="path3751-5-8-1" />
+                    <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="483.86053" x="206.31046"
+                        height="102.39527" width="212.39307" id="rect6000-1-1-7-0" />
+                    <ellipse ry="48" rx="  48" cy="537.75781" cx="120.60732" id="path3751-5-8-3-5" />
+                    <ellipse ry="48" rx="  48" cy="703.8974" cx="474.89059" id="path3751-5-8-3-5-1" />
+                    <ellipse ry="48" rx="  48" cy="703.89722" cx="349.29114" id="path3751-5-8-3-5-1-5" />
+                    <ellipse ry="48" rx="  48" cy="703.89722" cx="612.18994" id="path3751-5-8-3-5-1-5-8" />
+                    <ellipse ry="48" rx="  48" cy="840.17511" cx="536.24518" id="path3751-5-8-3-5-1-0" />
+                    <ellipse ry="48" rx="  48" cy="841.91956" cx="410.64581" id="path3751-5-8-3-5-1-5-0" />
+                    <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="924.17261" x="450.46082"
+                        height="102.39527" width="212.39307" id="rect6000-1-1-7-0-4" />
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+    <div class="mask-poster">
+        <svg width=1000 height=1300>
+            <g id=mask transform="translate(-5,-5)">
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5870);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="93.183121" cx="280.55588" id="title-1" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5872);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="81.170578" cx="934.6452" id="title-4" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5874);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="253.28258" cx="455.38" id="path3751-5-4-1-9" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5876);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="409.43637" cx="245.33394" id="path3751-5-4-1-9-6" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5878);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="396.38751" cx="620.82861" id="path3751-5-4-1-9-6-7" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5880);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="536.09924" cx="129.89706" id="path3751-5-4-1-9-6-3" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5882);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="691.18823" cx="363.71259" id="path3751-5-4-1-9-6-3-1" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5884);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="692.0871" cx="497.17252" id="path3751-5-4-1-9-6-3-1-2" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5886);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="687.44507" cx="634.5849" id="path3751-5-4-1-9-6-3-1-2-7" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5888);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="836.53473" cx="435.26321" id="path3751-5-4-1-9-6-3-1-2-7-6" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5890);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="830.82434" cx="560.39563" id="path3751-5-4-1-9-6-3-1-2-7-6-0" />
+                <ellipse transform="rotate(1.3675311)" ry="62.058422" rx="58.080318"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5892);stroke-width:1.94598591;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    cy="1085.1609" cx="743.47742" id="path3751-5-4-1-9-6-3-1-2-7-6-0-9" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="37.650261" x="347.71146"
+                    height="119.98225" width="248.8728" id="title-2"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5894);stroke-width:1.87484419;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                <rect inkscape:label="#title-3" transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="33.325119"
+                    x="606.43506" height="125.1932" width="259.68161" id="tittle-3"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5896);stroke-width:1.95627069;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="196.9474" x="517.84869"
+                    height="119.98225" width="248.8728" id="rect6000-1-2-6-2-1"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5898);stroke-width:1.87484419;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="348.80392" x="298.92157"
+                    height="119.98225" width="248.8728" id="rect6000-1-2-6-2-1-8"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5900);stroke-width:1.87484419;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="480.13513" x="191.8719"
+                    height="119.98225" width="248.8728" id="rect6000-1-2-6-2-1-8-9"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5902);stroke-width:1.87484419;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="916.66864" x="429.6044"
+                    height="119.98225" width="248.8728" id="rect6000-1-2-6-2-1-8-8"
+                    style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient5904);stroke-width:1.87484419;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                <!--ellipse ry="60" rx="60" cy="1098.4962" cx="713.63586" id="path3751-5-8-3-5-1-0-1" fill="white" />
+                <ellipse ry="60" rx="60" cy="99.131371" cx="923.58502" id="path3751" fill="white" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="44.302792" x="617.02332" height="200"
+                    width="250" id="rect6000" fill="white" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="46.305637" x="359.92737" height="125"
+                    width="250" id="rect6000-1" fill="white" />
+                <ellipse ry="60" rx="60" cy="101.52998" cx="274.21854" id="path3751-5" fill="white" />
+                <rect transform=" matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="203.56873" x="531.32465" height="125"
+                    width="250" id="rect6000-1-1" fill="white" />
+                <ellipse ry="60" rx="60" cy="260.27371" cx="445.60938" id="path3751-5-8" fill="white" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="357.46423" x="319.46051" height="125"
+                    width="250" id="rect6000-1-1-7" fill="white" />
+                <ellipse ry="60" rx="60" cy="412.33902" cx="233.75319" id="path3751-5-8-3" fill="white" />
+                <ellipse ry="60" rx="60" cy="410.59464" cx="610.1153" id="path3751-5-8-1" fill="white" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="483.86053" x="206.31046" height="125"
+                    width="250" id="rect6000-1-1-7-0" fill="white" />
+                <ellipse ry="60" rx="60" cy="537.75781" cx="120.60732" id="path3751-5-8-3-5" fill="white" />
+                <ellipse ry="60" rx="60" cy="703.8974" cx="474.89059" id="path3751-5-8-3-5-1" fill="white" />
+                <ellipse ry="60" rx="60" cy="703.89722" cx="349.29114" id="path3751-5-8-3-5-1-5" fill="white" />
+                <ellipse ry="60" rx="60" cy="703.89722" cx="612.18994" id="path3751-5-8-3-5-1-5-8" fill="white" />
+                <ellipse ry="60" rx="60" cy="840.17511" cx="536.24518" id="path3751-5-8-3-5-1-0" fill="white" />
+                <ellipse ry="60" rx="60" cy="841.91956" cx="410.64581" id="path3751-5-8-3-5-1-5-0" fill="white" />
+                <rect transform="matrix(0.99996269,0.0086387,0,1,0,0)" ry="0" y="924.17261" x="450.46082" height="125"
+                    width="250" id="rect6000-1-1-7-0-4" fill="white" /-->
+            </g>
+        </svg>
+    </div>
+    <script src="parasite-poster.js">
+    </script>
+
+
+
+</body>
+
+</html>

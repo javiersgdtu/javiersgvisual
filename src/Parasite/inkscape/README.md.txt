@@ -1,0 +1,1 @@
+Dont erase or touch via VisualStudio the code here: it is the one used in Inkscape. Make a copy somewhere else and edit it.
