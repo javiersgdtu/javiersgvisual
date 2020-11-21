@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg11319"
+   width="1143"
+   height="692"
+   viewBox="0 0 1143 692"
+   sodipodi:docname="background.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:export-filename="C:\Users\Javier San Miguel\Desktop\Data\Data visualization\Parasite\images\background.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <metadata
+     id="metadata11325">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs11323" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="716"
+     inkscape:window-height="405"
+     id="namedview11321"
+     showgrid="true"
+     inkscape:zoom="0.49693789"
+     inkscape:cx="485.07801"
+     inkscape:cy="328.13505"
+     inkscape:window-x="156"
+     inkscape:window-y="156"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="house-color">
+    <inkscape:grid
+       type="xygrid"
+       id="grid11916" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     id="house "
+     inkscape:label="house"
+     style="display:none">
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.74968034px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 156.18458,352.96442 202.02356,62.07227 204.15011,-60.64531 20.55678,7.84821 61.67035,-22.1177 -226.1246,-70.63397 z"
+       inkscape:connector-curvature="0"
+       id="path1124" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.82252359px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 135,269.98768 257.76695,307 l 155,-45 -90,-30 -70,15 L 230,242 Z"
+       id="daughter-room"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.91383493px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 675,197 33.9374,-9.55475 16.86481,5.90409 L 760,182 610,132 545,152 Z"
+       id="son-room"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.88905299px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 775,287 835,307 965,268.50924 879.68092,237.26841 1007,198 945,177 925,182 800,143.63501 705,172 l 55.8924,20 0.82681,49.89048 L 700,262 Z"
+       id="kitchen"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.7416662px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 48.339381,330.41665 -49.3938172,27.30561 v 91.4072 c 229.5527162,101.34678 351.4221062,102.72318 361.1603762,0 l 3.49285,-21.96607 z"
+       id="garden"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:label="path10647" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.70787728px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1030,192 33.3526,-3.72397 L 1143,212 1142.8459,332 880,237 Z"
+       id="back-garden"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
+    <g
+       id="g11920">
+      <path
+         inkscape:connector-curvature="0"
+         id="path10651"
+         d="m 977.4927,526.75721 47.8293,13.83587 51.5658,-14.18176 -48.2029,-14.52767 z"
+         style="fill:none;stroke:#000000;stroke-width:0.75797236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="path10653"
+         d="m 610,397 57,19 244.78581,-73.07071 -135.26708,-40.81581 -104.62645,28.36353 76.97516,23.52098 z"
+         style="fill:none;stroke:#000000;stroke-width:0.75797236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.77673876px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 543.00137,602.24855 719.9647,542.24468 v 97.5063 l -176.96333,52.50339 z"
+       id="path1072"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="house-color"
+     inkscape:label="house-color"
+     style="display:inline">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:7.03200006;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1691"
+       width="1240"
+       height="760"
+       x="-40"
+       y="-28"
+       rx="63.929401"
+       ry="96.173897"
+       inkscape:export-filename="C:\Users\Javier San Miguel\Desktop\Data\Data visualization\Parasite\images\rect1691.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

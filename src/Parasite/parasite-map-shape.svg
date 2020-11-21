@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg11319"
+   width="1143"
+   height="692"
+   viewBox="0 0 1143 692"
+   sodipodi:docname="parasite-map final.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata11325">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs11323" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     id="namedview11321"
+     showgrid="true"
+     inkscape:zoom="0.49693788"
+     inkscape:cx="658.9714"
+     inkscape:cy="403.78795"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11319">
+    <inkscape:grid
+       type="xygrid"
+       id="grid11916" />
+  </sodipodi:namedview>
+ 
+  <g
+     id="house">
+    <path
+       inkscape:connector-curvature="0"
+       id="livingroom"
+       d="m 156.18458,352.96442 202.02356,62.07227 204.15011,-60.64531 20.55678,7.84821 61.67035,-22.1177 -226.1246,-70.63397 z"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.74968034px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="daughter-room"
+       d="M 135,269.98768 257.76695,307 l 155,-45 -90,-30 -70,15 L 230,242 Z"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.82252359px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="son-room"
+       d="m 652.87116,203.60734 56.06624,-16.16209 16.86481,5.90409 47.73057,-14.46503 -174.37572,-56.0889 -82.54661,28.25933 z"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.91383493px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="kitchen"
+       d="M 775,287 835,307 965,268.50924 879.68092,237.26841 1007,198 945,177 925,182 800,143.63501 705,172 l 55.8924,20 0.82681,49.89048 L 700,262 Z"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.88905299px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:label="path10647"
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       id="garden"
+       d="m 48.339381,330.41665 -49.3938172,27.30561 v 91.4072 c 229.5527162,101.34678 351.4221062,102.72318 361.1603762,0 l 3.49285,-21.96607 z"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.7416662px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       id="back-garden"
+       d="m 1030,192 33.3526,-3.72397 L 1143,212 1142.8459,332 880,237 Z"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.70787728px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <g
+       id="g11920">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.75797236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 977.4927,526.75721 47.8293,13.83587 51.5658,-14.18176 -48.2029,-14.52767 z"
+         id="path10651"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.75797236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 610,397 57,19 244.78581,-73.07071 -135.26708,-40.81581 -104.62645,28.36353 76.97516,23.52098 z"
+         id="path10653"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="cave"
+       d="M 543.00137,602.24855 719.9647,542.24468 v 97.5063 l -176.96333,52.50339 z"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.77673876px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>
