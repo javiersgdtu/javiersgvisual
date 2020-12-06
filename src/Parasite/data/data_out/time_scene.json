@@ -1,0 +1,42 @@
+[
+    { "slide": "occupancy", "level": "Street & Underground", "family": "Kim", "pct": 51 },
+    { "slide": "occupancy", "level": "Street & Underground", "family": "Park", "pct": 6 },
+    { "slide": "occupancy", "level": "Street & Underground", "family": "Geun Se & Moon Gwang", "pct": 43 },
+    { "slide": "occupancy", "level": "First floor", "family": "Park", "pct": 36 },
+    { "slide": "occupancy", "level": "First floor", "family": "Kim", "pct": 51 },
+    { "slide": "occupancy", "level": "First floor", "family": "Geun Se & Moon Gwang", "pct": 13 },
+    { "slide": "occupancy", "level": "Second Floor", "family": "Park", "pct": 51 },
+    { "slide": "occupancy", "level": "Second Floor", "family": "Kim", "pct": 48 },
+    { "slide": "occupancy", "level": "Second Floor", "family": "Geun Se & Moon Gwang", "pct": 1 },
+
+    { "slide": "updown", "level": "Street & Underground", "family": "Kim", "pct": 50 },
+    { "slide": "updown", "level": "Street & Underground", "family": "Park", "pct": 4 },
+    { "slide": "updown", "level": "Street & Underground", "family": "Geun Se & Moon Gwang", "pct": 46 },
+    { "slide": "updown", "level": "First floor", "family": "Park", "pct": 44 },
+    { "slide": "updown", "level": "First floor", "family": "Kim", "pct": 56 },
+    { "slide": "updown", "level": "First floor", "family": "Geun Se & Moon Gwang", "pct": 0 },
+
+
+    { "slide": "static", "level": "Street & Underground", "family": "Kim", "pct": 19 },
+    { "slide": "static", "level": "Street & Underground", "family": "Park", "pct": 5 },
+    { "slide": "static", "level": "Street & Underground", "family": "Geun Se & Moon Gwang", "pct": 76 },
+    { "slide": "static", "level": "First floor", "family": "Park", "pct": 40 },
+    { "slide": "static", "level": "First floor", "family": "Kim", "pct": 52 },
+    { "slide": "static", "level": "First floor", "family": "Geun Se & Moon Gwang", "pct": 8 },
+
+    { "slide": "static", "level": "Second Floor", "family": "Park", "pct": 68 },
+    { "slide": "static", "level": "Second Floor", "family": "Kim", "pct": 32 },
+    { "slide": "static", "level": "Second Floor", "family": "Geun Se & Moon Gwang", "pct": 0 },
+
+
+    { "slide": "move", "level": "Street & Underground", "family": "Kim", "pct": 51 },
+    { "slide": "move", "level": "Street & Underground", "family": "Park", "pct": 3 },
+    { "slide": "move", "level": "Street & Underground", "family": "Geun Se & Moon Gwang", "pct": 46 },
+    { "slide": "move", "level": "First floor", "family": "Park", "pct": 39 },
+    { "slide": "move", "level": "First floor", "family": "Kim", "pct": 50 },
+    { "slide": "move", "level": "First floor", "family": "Geun Se & Moon Gwang", "pct": 11 },
+    { "slide": "move", "level": "Second Floor", "family": "Park", "pct": 44 },
+    { "slide": "move", "level": "Second Floor", "family": "Kim", "pct": 55 },
+    { "slide": "move", "level": "Second Floor", "family": "Geun Se & Moon Gwang", "pct": 1 }
+
+]
