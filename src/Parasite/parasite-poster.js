@@ -4,7 +4,8 @@ srcset = "images/parasite.jpg 3x"
 var f = d3.format(".1f")
 
 //Morse Rectangles.
-var rect = d3.select(".mask-poster")
+var rect = //d3.select(".mask-poster")
+    d3.select("#mask")
     .selectAll("rect")
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
@@ -18,7 +19,8 @@ rect.transition()
     .style("opacity", 0);
 
 //Morse Circles.
-var ellipse = d3.select(".mask-poster")
+var ellipse = //d3.select(".mask-poster")
+    d3.select("#mask")
     .selectAll("ellipse")
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
