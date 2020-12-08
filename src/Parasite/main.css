@@ -319,8 +319,8 @@
         }
         
         .poster-overlay-wrap {
-            clip-path: url(#poster);
-            -webkit-clip-path: url(#poster);
+            clip-path: url(#trtrposter);
+            -webkit-clip-path: url(#trtrposter);
             position: absolute;
             /*display: inline-block;
      <= shrinks container to image size */
