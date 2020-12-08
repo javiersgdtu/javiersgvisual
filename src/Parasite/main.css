@@ -324,7 +324,6 @@
             position: absolute;
             /*display: inline-block;
      <= shrinks container to image size */
-            /*transition: transform 150ms ease-in-out;*/
         }
         
         .mask-poster {
