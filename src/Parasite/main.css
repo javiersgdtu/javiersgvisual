@@ -319,12 +319,12 @@
         }
         
         .poster-overlay-wrap {
-            clip-path: url(#trtrposter);
-            -webkit-clip-path: url(#trtrposter);
             position: absolute;
             /*display: inline-block;
      <= shrinks container to image size */
             transition: transform 150ms ease-in-out;
+            clip-path: url(#poster);
+            -webkit-clip-path: url(#poster);
         }
         
         .mask-poster {
