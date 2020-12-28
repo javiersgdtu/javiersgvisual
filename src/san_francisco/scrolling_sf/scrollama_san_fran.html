@@ -100,6 +100,25 @@
             font-size: 1.5rem;
             background-color: rgba(0, 0, 0, 0.5);
         }
+        
+        .button {
+            font-family: "San Francisco";
+            position: relative;
+            background: rgb(230, 121, 130);
+            color: white;
+            cursor: pointer;
+            border-radius: 3px;
+            border: none;
+            padding: 5px;
+            margin-top: 0%;
+            max-width: 150px;
+            left: 43%;
+            outline: none
+        }
+        
+        .button:hover {
+            background-color: #696969
+        }
     </style>
 
 </head>
@@ -151,7 +170,14 @@
 
         </section>
 
-        <section id='outro'></section>
+        <section id='outro'>
+
+            <button class="button" onclick="toTop()">Back to Top</button>
+            <button class="button">
+                <a  style="text-decoration:none;color:white" href="https://javiersgvisual.online/" >Back to Portfolio</a>
+                </button>
+
+        </section>
     </main>
 
     <script src='https://unpkg.com/d3@5.9.1/dist/d3.min.js'></script>
@@ -235,6 +261,10 @@
 
         // kick things off
         init();
+
+        function toTop() {
+            window.scrollTo(0, 0);
+        }
     </script>
 </body>
 
