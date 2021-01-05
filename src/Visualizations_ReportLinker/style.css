@@ -1,0 +1,65 @@
+.div-bar {
+    background-color: #E7EBED;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 70%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    visibility: hidden;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #687781;
+    color: #3D4B57;
+    padding: 5px;
+}
+
+.axisY path {
+    stroke: #687781
+}
+
+.axisY line {
+    stroke: #687781
+}
+
+.axisY text {
+    fill: #687781
+}
+
+.axisX path {
+    stroke: #687781
+}
+
+.axisX line {
+    stroke: #687781
+}
+
+.axisX text {
+    fill: #687781
+}
+
+.textAxis {
+    fill: #687781;
+    font-size: 15px
+}

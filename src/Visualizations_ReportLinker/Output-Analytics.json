@@ -1,0 +1,1071 @@
+{
+    "took": 117,
+    "timed_out": false,
+    "_shards": {
+        "total": 12,
+        "successful": 12,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": 7608,
+        "max_score": null,
+        "hits": []
+    },
+    "aggregations": {
+        "hits_over_time": {
+            "buckets": [{
+                    "key_as_string": "2019-01-01T00:00:00.000Z",
+                    "key": 1546300800000,
+                    "doc_count": 129
+                },
+                {
+                    "key_as_string": "2019-02-01T00:00:00.000Z",
+                    "key": 1548979200000,
+                    "doc_count": 229
+                },
+                {
+                    "key_as_string": "2019-03-01T00:00:00.000Z",
+                    "key": 1551398400000,
+                    "doc_count": 297
+                },
+                {
+                    "key_as_string": "2019-04-01T00:00:00.000Z",
+                    "key": 1554076800000,
+                    "doc_count": 255
+                },
+                {
+                    "key_as_string": "2019-05-01T00:00:00.000Z",
+                    "key": 1556668800000,
+                    "doc_count": 278
+                },
+                {
+                    "key_as_string": "2019-06-01T00:00:00.000Z",
+                    "key": 1559347200000,
+                    "doc_count": 260
+                },
+                {
+                    "key_as_string": "2019-07-01T00:00:00.000Z",
+                    "key": 1561939200000,
+                    "doc_count": 135
+                },
+                {
+                    "key_as_string": "2019-08-01T00:00:00.000Z",
+                    "key": 1564617600000,
+                    "doc_count": 239
+                },
+                {
+                    "key_as_string": "2019-09-01T00:00:00.000Z",
+                    "key": 1567296000000,
+                    "doc_count": 241
+                },
+                {
+                    "key_as_string": "2019-10-01T00:00:00.000Z",
+                    "key": 1569888000000,
+                    "doc_count": 188
+                },
+                {
+                    "key_as_string": "2019-11-01T00:00:00.000Z",
+                    "key": 1572566400000,
+                    "doc_count": 264
+                },
+                {
+                    "key_as_string": "2019-12-01T00:00:00.000Z",
+                    "key": 1575158400000,
+                    "doc_count": 1992
+                },
+                {
+                    "key_as_string": "2020-01-01T00:00:00.000Z",
+                    "key": 1577836800000,
+                    "doc_count": 171
+                },
+                {
+                    "key_as_string": "2020-02-01T00:00:00.000Z",
+                    "key": 1580515200000,
+                    "doc_count": 260
+                },
+                {
+                    "key_as_string": "2020-03-01T00:00:00.000Z",
+                    "key": 1583020800000,
+                    "doc_count": 293
+                },
+                {
+                    "key_as_string": "2020-04-01T00:00:00.000Z",
+                    "key": 1585699200000,
+                    "doc_count": 226
+                },
+                {
+                    "key_as_string": "2020-05-01T00:00:00.000Z",
+                    "key": 1588291200000,
+                    "doc_count": 319
+                },
+                {
+                    "key_as_string": "2020-06-01T00:00:00.000Z",
+                    "key": 1590969600000,
+                    "doc_count": 345
+                },
+                {
+                    "key_as_string": "2020-07-01T00:00:00.000Z",
+                    "key": 1593561600000,
+                    "doc_count": 206
+                },
+                {
+                    "key_as_string": "2020-08-01T00:00:00.000Z",
+                    "key": 1596240000000,
+                    "doc_count": 272
+                },
+                {
+                    "key_as_string": "2020-09-01T00:00:00.000Z",
+                    "key": 1598918400000,
+                    "doc_count": 245
+                },
+                {
+                    "key_as_string": "2020-10-01T00:00:00.000Z",
+                    "key": 1601510400000,
+                    "doc_count": 226
+                },
+                {
+                    "key_as_string": "2020-11-01T00:00:00.000Z",
+                    "key": 1604188800000,
+                    "doc_count": 500
+                },
+                {
+                    "key_as_string": "2020-12-01T00:00:00.000Z",
+                    "key": 1606780800000,
+                    "doc_count": 38
+                }
+            ]
+        },
+        "sentiment": {
+            "doc_count": 7608,
+            "bg_count": 136553959,
+            "buckets": [{
+                    "key": "1##Positive",
+                    "doc_count": 365
+                },
+                {
+                    "key": "2##Negative",
+                    "doc_count": 619
+                },
+                {
+                    "key": "3##Neutral",
+                    "doc_count": 3619
+                }
+            ]
+        },
+        "country": {
+            "doc_count": 7608,
+            "bg_count": 136553959,
+            "buckets": [{
+                    "key": "726275##United States",
+                    "doc_count": 2302,
+                    "score": 12162.9921875,
+                    "bg_count": 879615
+                },
+                {
+                    "key": "726282##China",
+                    "doc_count": 674,
+                    "score": 8949.333984375,
+                    "bg_count": 119642
+                },
+                {
+                    "key": "726396##India",
+                    "doc_count": 464,
+                    "score": 8531.0908203125,
+                    "bg_count": 88113
+                },
+                {
+                    "key": "726286##Japan",
+                    "doc_count": 344,
+                    "score": 8292.173828125,
+                    "bg_count": 68665
+                },
+                {
+                    "key": "726373##United Kingdom",
+                    "doc_count": 337,
+                    "score": 8275.03125,
+                    "bg_count": 125082
+                },
+                {
+                    "key": "726351##Australia",
+                    "doc_count": 283,
+                    "score": 8168.40380859375,
+                    "bg_count": 100448
+                },
+                {
+                    "key": "726276##Canada",
+                    "doc_count": 232,
+                    "score": 8065.84814453125,
+                    "bg_count": 110419
+                },
+                {
+                    "key": "726365##Germany",
+                    "doc_count": 159,
+                    "score": 7923.92919921875,
+                    "bg_count": 37169
+                },
+                {
+                    "key": "459961##Hong Kong",
+                    "doc_count": 141,
+                    "score": 7888.70703125,
+                    "bg_count": 23205
+                },
+                {
+                    "key": "726368##Italy",
+                    "doc_count": 101,
+                    "score": 7808.9873046875,
+                    "bg_count": 18175
+                },
+                {
+                    "key": "726362##France",
+                    "doc_count": 99,
+                    "score": 7804.7724609375,
+                    "bg_count": 22035
+                },
+                {
+                    "key": "726412##Thailand",
+                    "doc_count": 89,
+                    "score": 7784.771484375,
+                    "bg_count": 22051
+                },
+                {
+                    "key": "726333##South Africa",
+                    "doc_count": 84,
+                    "score": 7774.5966796875,
+                    "bg_count": 25191
+                },
+                {
+                    "key": "726406##Malaysia",
+                    "doc_count": 81,
+                    "score": 7768.60888671875,
+                    "bg_count": 24971
+                },
+                {
+                    "key": "726413##Singapore",
+                    "doc_count": 78,
+                    "score": 7762.79345703125,
+                    "bg_count": 21656
+                },
+                {
+                    "key": "726352##Switzerland",
+                    "doc_count": 68,
+                    "score": 7743.28955078125,
+                    "bg_count": 12754
+                },
+                {
+                    "key": "726263##Brazil",
+                    "doc_count": 67,
+                    "score": 7740.8798828125,
+                    "bg_count": 20106
+                },
+                {
+                    "key": "726380##Russia",
+                    "doc_count": 64,
+                    "score": 7734.734375,
+                    "bg_count": 22714
+                },
+                {
+                    "key": "726361##Sweden",
+                    "doc_count": 55,
+                    "score": 7717.2109375,
+                    "bg_count": 14163
+                },
+                {
+                    "key": "726363##Spain",
+                    "doc_count": 51,
+                    "score": 7709.0712890625,
+                    "bg_count": 16671
+                },
+                {
+                    "key": "726354##New Zealand",
+                    "doc_count": 44,
+                    "score": 7694.73779296875,
+                    "bg_count": 22651
+                },
+                {
+                    "key": "726420##United Arab Emirates",
+                    "doc_count": 43,
+                    "score": 7693.7412109375,
+                    "bg_count": 4649
+                },
+                {
+                    "key": "726404##Indonesia",
+                    "doc_count": 41,
+                    "score": 7689.19091796875,
+                    "bg_count": 14523
+                },
+                {
+                    "key": "726366##Belgium",
+                    "doc_count": 40,
+                    "score": 7687.61376953125,
+                    "bg_count": 6937
+                },
+                {
+                    "key": "726287##South Korea",
+                    "doc_count": 40,
+                    "score": 7687.43359375,
+                    "bg_count": 10163
+                },
+                {
+                    "key": "726252##Kenya",
+                    "doc_count": 38,
+                    "score": 7683.681640625,
+                    "bg_count": 5712
+                },
+                {
+                    "key": "726359##Norway",
+                    "doc_count": 37,
+                    "score": 7681.41064453125,
+                    "bg_count": 10583
+                },
+                {
+                    "key": "726377##Netherlands",
+                    "doc_count": 37,
+                    "score": 7681.37353515625,
+                    "bg_count": 11243
+                },
+                {
+                    "key": "726283##Taiwan",
+                    "doc_count": 36,
+                    "score": 7679.5576171875,
+                    "bg_count": 7940
+                }
+            ]
+        },
+        "company": {
+            "doc_count": 7608,
+            "bg_count": 136553959,
+            "buckets": [{
+                    "key": "aa3150b9f69bd1cfd893995f07600ad8##Facebook",
+                    "doc_count": 141,
+                    "score": 7889.86181640625,
+                    "bg_count": 2481
+                },
+                {
+                    "key": "3fa4537a43f9c008a7415bbafacc612e##Riot Blockchain",
+                    "doc_count": 119,
+                    "score": 7845.99267578125,
+                    "bg_count": 134
+                },
+                {
+                    "key": "6a8ad8e4412f67ad8a05488e3202de9b##IBM",
+                    "doc_count": 112,
+                    "score": 7831.86865234375,
+                    "bg_count": 2357
+                },
+                {
+                    "key": "6c97a34ad9bafb55d1e6d60e4fa25e4c##Amazon",
+                    "doc_count": 112,
+                    "score": 7831.859375,
+                    "bg_count": 2523
+                },
+                {
+                    "key": "98899fa5b8cc41f93035c4c012abbaa9##Investview Inc.",
+                    "doc_count": 108,
+                    "score": 7823.99267578125,
+                    "bg_count": 131
+                },
+                {
+                    "key": "5f532a3fc4f1ea403f37070f59a7a53a##Microsoft",
+                    "doc_count": 106,
+                    "score": 7819.85791015625,
+                    "bg_count": 2546
+                },
+                {
+                    "key": "da6cdfbbff0bdda85a5a0ba8ea51b0d3##Google",
+                    "doc_count": 93,
+                    "score": 7793.88916015625,
+                    "bg_count": 1983
+                },
+                {
+                    "key": "d5856042a5e7bfe9ab10ac52915dc6f0##blockchain of things",
+                    "doc_count": 87,
+                    "score": 7781.9951171875,
+                    "bg_count": 88
+                },
+                {
+                    "key": "a19b0645f7fdb8103b2a8a3237b305ea##Mastercard",
+                    "doc_count": 84,
+                    "score": 7775.93017578125,
+                    "bg_count": 1254
+                },
+                {
+                    "key": "7d2bc08ea54bc91981ecad86704ea3cc##Alibaba",
+                    "doc_count": 82,
+                    "score": 7771.927734375,
+                    "bg_count": 1291
+                },
+                {
+                    "key": "8a59c4a52afb3e8bfc80752e9909771c##PayPal",
+                    "doc_count": 70,
+                    "score": 7747.9521484375,
+                    "bg_count": 851
+                },
+                {
+                    "key": "df3d6eeb1eb77e2bb45f68820473a82a##Huawei",
+                    "doc_count": 57,
+                    "score": 7721.939453125,
+                    "bg_count": 1086
+                },
+                {
+                    "key": "ac68bbf921d953d1cfab916cb6120864##AWS",
+                    "doc_count": 55,
+                    "score": 7717.9755859375,
+                    "bg_count": 436
+                },
+                {
+                    "key": "58f49e7b4abc1c970c649c9881bf87ee##SBI Group",
+                    "doc_count": 54,
+                    "score": 7715.955078125,
+                    "bg_count": 803
+                },
+                {
+                    "key": "12d5bb6baa99dd6cdef029475aa2ff22##Allianz",
+                    "doc_count": 53,
+                    "score": 7713.90771484375,
+                    "bg_count": 1661
+                },
+                {
+                    "key": "1da7c369fb90c4bb39b773928ac346bf##Cisco Systems",
+                    "doc_count": 53,
+                    "score": 7713.9013671875,
+                    "bg_count": 1778
+                },
+                {
+                    "key": "e4a43b0b3e925fefd913b3fb9b0a4430##Advanced Micro Devices",
+                    "doc_count": 50,
+                    "score": 7707.96435546875,
+                    "bg_count": 639
+                },
+                {
+                    "key": "f7a8d6644d2bbb20cdb1e866e10213cb##Amazon Web Services",
+                    "doc_count": 44,
+                    "score": 7695.98583984375,
+                    "bg_count": 249
+                },
+                {
+                    "key": "ebb31f4889590d7d81625203277a3779##AXA",
+                    "doc_count": 44,
+                    "score": 7695.94677734375,
+                    "bg_count": 955
+                },
+                {
+                    "key": "3d4f61a2667c9c4e4e3b463173a217e6##Accenture",
+                    "doc_count": 42,
+                    "score": 7691.96630859375,
+                    "bg_count": 606
+                }
+            ]
+        },
+        "indicators": {
+            "doc_count": 7608,
+            "bg_count": 136553959,
+            "buckets": [{
+                    "key": "514554##Employment Income",
+                    "doc_count": 2458,
+                    "score": 12494.287109375,
+                    "bg_count": 533307
+                },
+                {
+                    "key": "647800##Greenhouse Gas Emissions",
+                    "doc_count": 1710,
+                    "score": 11017.58984375,
+                    "bg_count": 186834
+                },
+                {
+                    "key": "532448##Energy Consumption",
+                    "doc_count": 1192,
+                    "score": 9984.544921875,
+                    "bg_count": 133815
+                },
+                {
+                    "key": "514574##Number Of Enterprises",
+                    "doc_count": 1083,
+                    "score": 9767.501953125,
+                    "bg_count": 116635
+                },
+                {
+                    "key": "514480##Number Of Employees",
+                    "doc_count": 926,
+                    "score": 9450.2041015625,
+                    "bg_count": 175828
+                },
+                {
+                    "key": "514498##Foreign Direct Investment",
+                    "doc_count": 922,
+                    "score": 9445.54296875,
+                    "bg_count": 115898
+                },
+                {
+                    "key": "514584##Gross Domestic Product",
+                    "doc_count": 827,
+                    "score": 9254.8857421875,
+                    "bg_count": 127687
+                },
+                {
+                    "key": "514560##Labour Force",
+                    "doc_count": 790,
+                    "score": 9178.8115234375,
+                    "bg_count": 164917
+                },
+                {
+                    "key": "719273##General Government Tax Revenue",
+                    "doc_count": 787,
+                    "score": 9171.958984375,
+                    "bg_count": 180237
+                },
+                {
+                    "key": "606642##Online Retail Sales",
+                    "doc_count": 770,
+                    "score": 9145.19140625,
+                    "bg_count": 50399
+                },
+                {
+                    "key": "514505##Household Consumption Expenditure",
+                    "doc_count": 759,
+                    "score": 9117.251953125,
+                    "bg_count": 157004
+                },
+                {
+                    "key": "514516##Employment Costs",
+                    "doc_count": 755,
+                    "score": 9109.5771484375,
+                    "bg_count": 151181
+                },
+                {
+                    "key": "590477##Food Production",
+                    "doc_count": 735,
+                    "score": 9074.6103515625,
+                    "bg_count": 60844
+                },
+                {
+                    "key": "590706##Energy Supply",
+                    "doc_count": 691,
+                    "score": 8985.30859375,
+                    "bg_count": 84213
+                },
+                {
+                    "key": "514488##Unemployment Rate",
+                    "doc_count": 686,
+                    "score": 8968.12890625,
+                    "bg_count": 213068
+                },
+                {
+                    "key": "514460##Disposable Income",
+                    "doc_count": 677,
+                    "score": 8952.96484375,
+                    "bg_count": 162183
+                },
+                {
+                    "key": "719138##Labour Utilisation",
+                    "doc_count": 663,
+                    "score": 8927.751953125,
+                    "bg_count": 112143
+                },
+                {
+                    "key": "719928##Capital Flows",
+                    "doc_count": 641,
+                    "score": 8885.55078125,
+                    "bg_count": 79852
+                },
+                {
+                    "key": "514581##Corporate Tax Rate",
+                    "doc_count": 616,
+                    "score": 8834.220703125,
+                    "bg_count": 103732
+                },
+                {
+                    "key": "571659##Electricity Generation",
+                    "doc_count": 607,
+                    "score": 8816.783203125,
+                    "bg_count": 93630
+                },
+                {
+                    "key": "719899##Remittances",
+                    "doc_count": 574,
+                    "score": 8752.490234375,
+                    "bg_count": 62999
+                },
+                {
+                    "key": "657059##Asset Under Management",
+                    "doc_count": 568,
+                    "score": 8740.25,
+                    "bg_count": 67310
+                },
+                {
+                    "key": "719807##Real Gross Domestic Product",
+                    "doc_count": 556,
+                    "score": 8713.228515625,
+                    "bg_count": 121524
+                },
+                {
+                    "key": "586569##Electricity Consumption",
+                    "doc_count": 538,
+                    "score": 8680.5703125,
+                    "bg_count": 61566
+                },
+                {
+                    "key": "659451##Retail Revenue",
+                    "doc_count": 533,
+                    "score": 8666.1943359375,
+                    "bg_count": 140100
+                },
+                {
+                    "key": "719505##Gross Domestic Product Per Capita",
+                    "doc_count": 531,
+                    "score": 8665.48046875,
+                    "bg_count": 81116
+                },
+                {
+                    "key": "514583##Balance Of Payment",
+                    "doc_count": 519,
+                    "score": 8640.54296875,
+                    "bg_count": 97951
+                },
+                {
+                    "key": "550013##Energy Demand",
+                    "doc_count": 503,
+                    "score": 8610.69140625,
+                    "bg_count": 59391
+                },
+                {
+                    "key": "580285##Paid Claims",
+                    "doc_count": 469,
+                    "score": 8540.4736328125,
+                    "bg_count": 99197
+                },
+                {
+                    "key": "719639##Ease Of Doing Business",
+                    "doc_count": 461,
+                    "score": 8528.5927734375,
+                    "bg_count": 25253
+                },
+                {
+                    "key": "719128##Inflation Rate",
+                    "doc_count": 454,
+                    "score": 8508.5849609375,
+                    "bg_count": 133089
+                },
+                {
+                    "key": "593871##Catastrophe Events",
+                    "doc_count": 450,
+                    "score": 8505.07421875,
+                    "bg_count": 52521
+                },
+                {
+                    "key": "514456##Industrial Production",
+                    "doc_count": 449,
+                    "score": 8500.9755859375,
+                    "bg_count": 90182
+                },
+                {
+                    "key": "560097##Property Sales",
+                    "doc_count": 449,
+                    "score": 8497.2578125,
+                    "bg_count": 156915
+                },
+                {
+                    "key": "521061##Internet Subscribers",
+                    "doc_count": 427,
+                    "score": 8460.53125,
+                    "bg_count": 26355
+                },
+                {
+                    "key": "599405##Consumer Confidence Index",
+                    "doc_count": 425,
+                    "score": 8455.380859375,
+                    "bg_count": 47008
+                },
+                {
+                    "key": "514589##Trade Balance",
+                    "doc_count": 425,
+                    "score": 8452.853515625,
+                    "bg_count": 92375
+                },
+                {
+                    "key": "514544##Export",
+                    "doc_count": 419,
+                    "score": 8442.533203125,
+                    "bg_count": 62235
+                },
+                {
+                    "key": "514459##Employees Compensation",
+                    "doc_count": 408,
+                    "score": 8418.5693359375,
+                    "bg_count": 97472
+                },
+                {
+                    "key": "529475##Renewable Generation",
+                    "doc_count": 401,
+                    "score": 8408.3291015625,
+                    "bg_count": 29991
+                },
+                {
+                    "key": "565392##Electricity Price",
+                    "doc_count": 402,
+                    "score": 8408.154296875,
+                    "bg_count": 69013
+                },
+                {
+                    "key": "514543##Life Expectancy",
+                    "doc_count": 399,
+                    "score": 8401.0390625,
+                    "bg_count": 89038
+                },
+                {
+                    "key": "514577##Labour Productivity",
+                    "doc_count": 395,
+                    "score": 8395.267578125,
+                    "bg_count": 49049
+                },
+                {
+                    "key": "719023##Interest Payments Paid By Central Government",
+                    "doc_count": 397,
+                    "score": 8394.17578125,
+                    "bg_count": 140432
+                },
+                {
+                    "key": "566798##Fuel Demand",
+                    "doc_count": 386,
+                    "score": 8376.81640625,
+                    "bg_count": 57156
+                },
+                {
+                    "key": "601846##Direct Sales",
+                    "doc_count": 383,
+                    "score": 8369.810546875,
+                    "bg_count": 75197
+                },
+                {
+                    "key": "552867##Agricultural Production",
+                    "doc_count": 376,
+                    "score": 8356.587890625,
+                    "bg_count": 61232
+                },
+                {
+                    "key": "565156##Electricity Demand",
+                    "doc_count": 356,
+                    "score": 8317.51953125,
+                    "bg_count": 44510
+                },
+                {
+                    "key": "520441##Car Sales",
+                    "doc_count": 344,
+                    "score": 8292.6328125,
+                    "bg_count": 60435
+                },
+                {
+                    "key": "520311##Health Provider Density",
+                    "doc_count": 336,
+                    "score": 8276.5625,
+                    "bg_count": 61701
+                }
+            ]
+        },
+        "sector": {
+            "doc_count": 7608,
+            "bg_count": 136553959,
+            "buckets": [{
+                    "key": "8494##Financial Services",
+                    "doc_count": 1215,
+                    "score": 10022.1728515625,
+                    "bg_count": 284080
+                },
+                {
+                    "key": "6274##Real Estate",
+                    "doc_count": 1059,
+                    "score": 9709.0146484375,
+                    "bg_count": 304863
+                },
+                {
+                    "key": "664274##Advanced IT",
+                    "doc_count": 882,
+                    "score": 9371.123046875,
+                    "bg_count": 15742
+                },
+                {
+                    "key": "8304##Infectious Disease",
+                    "doc_count": 649,
+                    "score": 8901.294921875,
+                    "bg_count": 84458
+                },
+                {
+                    "key": "8830##Banking",
+                    "doc_count": 603,
+                    "score": 8807.57421875,
+                    "bg_count": 115340
+                },
+                {
+                    "key": "8850##Retail Banking",
+                    "doc_count": 475,
+                    "score": 8552.0,
+                    "bg_count": 107699
+                },
+                {
+                    "key": "597055##ICT",
+                    "doc_count": 457,
+                    "score": 8519.048828125,
+                    "bg_count": 52963
+                },
+                {
+                    "key": "517859##Payments",
+                    "doc_count": 455,
+                    "score": 8517.5380859375,
+                    "bg_count": 8290
+                },
+                {
+                    "key": "597295##Blockchain",
+                    "doc_count": 450,
+                    "score": 8507.947265625,
+                    "bg_count": 945
+                },
+                {
+                    "key": "726497##Services",
+                    "doc_count": 439,
+                    "score": 8478.8232421875,
+                    "bg_count": 128811
+                },
+                {
+                    "key": "595388##Cryptocurrency",
+                    "doc_count": 404,
+                    "score": 8415.958984375,
+                    "bg_count": 742
+                },
+                {
+                    "key": "513107##Artificial Intelligence",
+                    "doc_count": 378,
+                    "score": 8363.7705078125,
+                    "bg_count": 4115
+                },
+                {
+                    "key": "6242##Healthcare",
+                    "doc_count": 351,
+                    "score": 8301.267578125,
+                    "bg_count": 156739
+                },
+                {
+                    "key": "8477##Business Services",
+                    "doc_count": 329,
+                    "score": 8259.6455078125,
+                    "bg_count": 114057
+                },
+                {
+                    "key": "726157##ICT And Media",
+                    "doc_count": 319,
+                    "score": 8244.8837890625,
+                    "bg_count": 20034
+                },
+                {
+                    "key": "6349##Energy",
+                    "doc_count": 318,
+                    "score": 8238.814453125,
+                    "bg_count": 93074
+                },
+                {
+                    "key": "459091##Pollution Control",
+                    "doc_count": 315,
+                    "score": 8235.8369140625,
+                    "bg_count": 38827
+                },
+                {
+                    "key": "510738##E-Commerce",
+                    "doc_count": 252,
+                    "score": 8110.931640625,
+                    "bg_count": 19173
+                },
+                {
+                    "key": "510717##Construction",
+                    "doc_count": 241,
+                    "score": 8086.0869140625,
+                    "bg_count": 70230
+                },
+                {
+                    "key": "508853##Research And Development",
+                    "doc_count": 241,
+                    "score": 8085.14599609375,
+                    "bg_count": 87126
+                },
+                {
+                    "key": "8495##Insurance",
+                    "doc_count": 222,
+                    "score": 8046.9990234375,
+                    "bg_count": 89757
+                },
+                {
+                    "key": "6441##Renewable Energy",
+                    "doc_count": 218,
+                    "score": 8042.50341796875,
+                    "bg_count": 26863
+                },
+                {
+                    "key": "522620##Fintech",
+                    "doc_count": 183,
+                    "score": 7973.92919921875,
+                    "bg_count": 1267
+                },
+                {
+                    "key": "8485##Human Resources",
+                    "doc_count": 165,
+                    "score": 7935.94140625,
+                    "bg_count": 36952
+                },
+                {
+                    "key": "86396##Bank Lending",
+                    "doc_count": 165,
+                    "score": 7932.54541015625,
+                    "bg_count": 97898
+                },
+                {
+                    "key": "456448##Cloud Computing",
+                    "doc_count": 154,
+                    "score": 7915.64697265625,
+                    "bg_count": 6331
+                },
+                {
+                    "key": "510739##Mobile Services",
+                    "doc_count": 152,
+                    "score": 7911.02392578125,
+                    "bg_count": 17514
+                },
+                {
+                    "key": "453334##Retail",
+                    "doc_count": 150,
+                    "score": 7902.97705078125,
+                    "bg_count": 90161
+                },
+                {
+                    "key": "508791##Software",
+                    "doc_count": 139,
+                    "score": 7885.13818359375,
+                    "bg_count": 15471
+                },
+                {
+                    "key": "139987##Application",
+                    "doc_count": 136,
+                    "score": 7879.69140625,
+                    "bg_count": 5540
+                },
+                {
+                    "key": "508795##E-Services",
+                    "doc_count": 135,
+                    "score": 7877.68310546875,
+                    "bg_count": 5693
+                },
+                {
+                    "key": "6232##Life Sciences",
+                    "doc_count": 130,
+                    "score": 7864.2255859375,
+                    "bg_count": 67742
+                },
+                {
+                    "key": "517851##Cybersecurity",
+                    "doc_count": 124,
+                    "score": 7855.619140625,
+                    "bg_count": 6840
+                },
+                {
+                    "key": "726240##Internet Of Things",
+                    "doc_count": 119,
+                    "score": 7845.79296875,
+                    "bg_count": 3718
+                },
+                {
+                    "key": "6307##Transportation",
+                    "doc_count": 118,
+                    "score": 7841.92041015625,
+                    "bg_count": 37325
+                },
+                {
+                    "key": "10908##Logistics",
+                    "doc_count": 110,
+                    "score": 7827.130859375,
+                    "bg_count": 15603
+                },
+                {
+                    "key": "453324##Pension",
+                    "doc_count": 110,
+                    "score": 7823.6826171875,
+                    "bg_count": 77493
+                },
+                {
+                    "key": "6281##Industrial Equipment",
+                    "doc_count": 107,
+                    "score": 7821.72900390625,
+                    "bg_count": 4866
+                },
+                {
+                    "key": "8480##Advertising",
+                    "doc_count": 100,
+                    "score": 7807.29345703125,
+                    "bg_count": 12682
+                },
+                {
+                    "key": "8615##Telecom",
+                    "doc_count": 98,
+                    "score": 7802.095703125,
+                    "bg_count": 34180
+                },
+                {
+                    "key": "86698##Housing",
+                    "doc_count": 99,
+                    "score": 7800.83251953125,
+                    "bg_count": 92744
+                },
+                {
+                    "key": "6226##Tourism",
+                    "doc_count": 95,
+                    "score": 7796.06298828125,
+                    "bg_count": 34769
+                },
+                {
+                    "key": "17680##Wealth Management",
+                    "doc_count": 94,
+                    "score": 7795.13037109375,
+                    "bg_count": 15608
+                },
+                {
+                    "key": "520091##Data Analytics",
+                    "doc_count": 92,
+                    "score": 7791.78662109375,
+                    "bg_count": 3832
+                },
+                {
+                    "key": "505420##Auto Parts",
+                    "doc_count": 90,
+                    "score": 7786.6484375,
+                    "bg_count": 24259
+                },
+                {
+                    "key": "2##Agriculture",
+                    "doc_count": 90,
+                    "score": 7786.15966796875,
+                    "bg_count": 33033
+                },
+                {
+                    "key": "139283##IT Services",
+                    "doc_count": 88,
+                    "score": 7783.65771484375,
+                    "bg_count": 6143
+                },
+                {
+                    "key": "522125##Natural Gas",
+                    "doc_count": 89,
+                    "score": 7782.1533203125,
+                    "bg_count": 69049
+                },
+                {
+                    "key": "115955##Pathology",
+                    "doc_count": 88,
+                    "score": 7781.7705078125,
+                    "bg_count": 40009
+                },
+                {
+                    "key": "6257##Pharmaceutical",
+                    "doc_count": 85,
+                    "score": 7774.1064453125,
+                    "bg_count": 69880
+                }
+            ]
+        }
+    }
+}
