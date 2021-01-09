@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body style="background-color: #E7EBED;">
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-center h-100">
+
+            <div class="col-sm-4" style="border-style: solid;
+            border-width: 1px;border-color: #003264;background:#003264;">
+                <span style="color:white;">MENU & REPORT RESULTS</span>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="row justify-content-md-center">
+                    <div id="div-trend" style="overflow:visible;border-color:#E7EBED"></div>
+                </div>
+                <div class="row">
+                    <div id="div-bar" class="col-sm-6" style="border-color:#E7EBED"></div>
+                    <div id="div-pie" class="col-sm-6" style="border-color:#E7EBED"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        var api = '../Output-Analytics.json';
+    </script>
+
+    <script src=../Barchart/barchart.js>
+    </script>
+    <script src=../trendline/trendline.js>
+    </script>
+    <script src=../piechart/piechart.js>
+    </script>
+</body>
+
+</html>
