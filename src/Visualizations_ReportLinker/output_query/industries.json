@@ -1,0 +1,451 @@
+{
+  "count": 50,
+  "name": "industry",
+  "facets": [
+    {
+      "count": 16706,
+      "name": "Agribusiness",
+      "id": "1",
+      "selected": false,
+      "score": 75276.1875,
+      "level": 0
+    },
+    {
+      "score": 66880.28125,
+      "selected": false,
+      "id": "726497",
+      "level": 0,
+      "count": 21899,
+      "name": "Services"
+    },
+    {
+      "level": 1,
+      "selected": false,
+      "score": 63069.48828125,
+      "id": "14",
+      "name": "Beverage",
+      "parentId": "1",
+      "count": 8451
+    },
+    {
+      "level": 0,
+      "id": "726196",
+      "score": 59996.515625,
+      "selected": false,
+      "name": "Heavy Industry",
+      "count": 14651
+    },
+    {
+      "selected": false,
+      "score": 58104.5,
+      "id": "726467",
+      "level": 0,
+      "count": 8197,
+      "name": "Consumer Goods And Retail"
+    },
+    {
+      "level": 2,
+      "id": "49",
+      "selected": false,
+      "score": 57874.8828125,
+      "name": "Alcoholic Drink",
+      "count": 5656,
+      "parentId": "1"
+    },
+    {
+      "level": 1,
+      "score": 57576.48046875,
+      "selected": false,
+      "id": "8494",
+      "name": "Financial Services",
+      "parentId": "726497",
+      "count": 13581
+    },
+    {
+      "level": 0,
+      "selected": false,
+      "score": 55365.828125,
+      "id": "6232",
+      "name": "Life Sciences",
+      "count": 8508
+    },
+    {
+      "count": 7239,
+      "parentId": "6232",
+      "name": "Healthcare",
+      "id": "6242",
+      "selected": false,
+      "score": 54598.78125,
+      "level": 1
+    },
+    {
+      "parentId": "726497",
+      "count": 7818,
+      "name": "Real Estate",
+      "score": 54504.73046875,
+      "selected": false,
+      "id": "6274",
+      "level": 2
+    },
+    {
+      "level": 1,
+      "selected": false,
+      "score": 53927.6796875,
+      "id": "2",
+      "name": "Agriculture",
+      "parentId": "1",
+      "count": 4810
+    },
+    {
+      "count": 5125,
+      "parentId": "726467",
+      "name": "Retail",
+      "id": "453334",
+      "selected": false,
+      "score": 53892.77734375,
+      "level": 1
+    },
+    {
+      "parentId": "1",
+      "count": 2791,
+      "name": "Beer",
+      "score": 52365.20703125,
+      "selected": false,
+      "id": "87",
+      "level": 3
+    },
+    {
+      "level": 1,
+      "selected": false,
+      "score": 51870.84765625,
+      "id": "793",
+      "name": "Food",
+      "parentId": "1",
+      "count": 3208
+    },
+    {
+      "parentId": "726196",
+      "count": 6188,
+      "name": "Energy & Environment",
+      "score": 51855.6484375,
+      "selected": false,
+      "id": "508830",
+      "level": 1
+    },
+    {
+      "level": 1,
+      "id": "598158",
+      "selected": false,
+      "score": 51689.796875,
+      "name": "Consumer Goods",
+      "count": 3562,
+      "parentId": "726467"
+    },
+    {
+      "parentId": "726497",
+      "count": 3982,
+      "name": "Insurance",
+      "selected": false,
+      "score": 51062.2421875,
+      "id": "8495",
+      "level": 2
+    },
+    {
+      "level": 1,
+      "id": "6217",
+      "selected": false,
+      "score": 50777.20703125,
+      "name": "Travel And Tourism",
+      "count": 2909,
+      "parentId": "726497"
+    },
+    {
+      "parentId": "726196",
+      "count": 2871,
+      "name": "Mining And Quarrying",
+      "score": 50632.26171875,
+      "selected": false,
+      "id": "521664",
+      "level": 1
+    },
+    {
+      "selected": false,
+      "score": 50620.921875,
+      "id": "13779",
+      "level": 2,
+      "parentId": "1",
+      "count": 2531,
+      "name": "Agricultural Products"
+    },
+    {
+      "id": "6218",
+      "selected": false,
+      "score": 50603.62890625,
+      "level": 1,
+      "count": 2354,
+      "parentId": "726497",
+      "name": "Leisure"
+    },
+    {
+      "name": "Construction",
+      "count": 3132,
+      "parentId": "726196",
+      "level": 1,
+      "id": "510717",
+      "score": 50377.70703125,
+      "selected": false
+    },
+    {
+      "name": "Tourism",
+      "parentId": "726497",
+      "count": 2371,
+      "level": 2,
+      "score": 50328.27734375,
+      "selected": false,
+      "id": "6226"
+    },
+    {
+      "count": 2839,
+      "parentId": "726497",
+      "name": "Residential Real Estate",
+      "id": "510724",
+      "score": 50208.29296875,
+      "selected": false,
+      "level": 3
+    },
+    {
+      "parentId": "726497",
+      "count": 2535,
+      "name": "Housing",
+      "selected": false,
+      "score": 50048.49609375,
+      "id": "86698",
+      "level": 4
+    },
+    {
+      "level": 2,
+      "id": "8104",
+      "score": 50023.03125,
+      "selected": false,
+      "name": "Environmental Services",
+      "count": 2380,
+      "parentId": "726196"
+    },
+    {
+      "level": 1,
+      "id": "597579",
+      "score": 49908.1796875,
+      "selected": false,
+      "name": "Food Services",
+      "count": 1753,
+      "parentId": "726497"
+    },
+    {
+      "count": 2627,
+      "parentId": "6232",
+      "name": "Pathology",
+      "id": "115955",
+      "selected": false,
+      "score": 49831.0859375,
+      "level": 2
+    },
+    {
+      "parentId": "1",
+      "count": 1555,
+      "name": "Tobacco",
+      "score": 49682.52734375,
+      "selected": false,
+      "id": "6088",
+      "level": 1
+    },
+    {
+      "name": "Business Services",
+      "count": 4493,
+      "parentId": "726497",
+      "level": 1,
+      "id": "8477",
+      "score": 49680.24609375,
+      "selected": false
+    },
+    {
+      "id": "508831",
+      "selected": false,
+      "score": 49424.86328125,
+      "level": 2,
+      "count": 1539,
+      "parentId": "726497",
+      "name": "Recreational Activity"
+    },
+    {
+      "name": "Transportation",
+      "count": 2377,
+      "parentId": "726497",
+      "level": 1,
+      "id": "6307",
+      "score": 49375.640625,
+      "selected": false
+    },
+    {
+      "parentId": "1",
+      "count": 1346,
+      "name": "Soft Drink",
+      "score": 49340.70703125,
+      "selected": false,
+      "id": "354",
+      "level": 2
+    },
+    {
+      "parentId": "726196",
+      "count": 4282,
+      "name": "Energy",
+      "selected": false,
+      "score": 49308.6484375,
+      "id": "6349",
+      "level": 2
+    },
+    {
+      "level": 2,
+      "selected": false,
+      "score": 49268.54296875,
+      "id": "6345",
+      "name": "Mineral",
+      "parentId": "726196",
+      "count": 1512
+    },
+    {
+      "parentId": "1",
+      "count": 1668,
+      "name": "Processed Food",
+      "selected": false,
+      "score": 49240.20703125,
+      "id": "5828",
+      "level": 2
+    },
+    {
+      "selected": false,
+      "score": 49240.203125,
+      "id": "8497",
+      "level": 3,
+      "parentId": "726497",
+      "count": 1520,
+      "name": "Health Insurance"
+    },
+    {
+      "level": 2,
+      "id": "9279",
+      "selected": false,
+      "score": 49193.8203125,
+      "name": "Restaurant",
+      "count": 1304,
+      "parentId": "726497"
+    },
+    {
+      "selected": false,
+      "score": 49067.62890625,
+      "id": "319",
+      "level": 3,
+      "parentId": "1",
+      "count": 1154,
+      "name": "Wine"
+    },
+    {
+      "name": "Mental Health",
+      "parentId": "6232",
+      "count": 1305,
+      "level": 3,
+      "score": 49066.14453125,
+      "selected": false,
+      "id": "514439"
+    },
+    {
+      "parentId": "1",
+      "count": 1104,
+      "name": "Spirits",
+      "selected": false,
+      "score": 48982.9921875,
+      "id": "140",
+      "level": 3
+    },
+    {
+      "selected": false,
+      "score": 48856.625,
+      "id": "459091",
+      "level": 3,
+      "parentId": "726196",
+      "count": 1405,
+      "name": "Pollution Control"
+    },
+    {
+      "selected": false,
+      "score": 48802.6328125,
+      "id": "453324",
+      "level": 3,
+      "parentId": "726497",
+      "count": 1954,
+      "name": "Pension"
+    },
+    {
+      "level": 1,
+      "id": "6286",
+      "score": 48769.15625,
+      "selected": false,
+      "name": "Packaging",
+      "count": 1053,
+      "parentId": "726196"
+    },
+    {
+      "id": "514676",
+      "score": 48598.9375,
+      "selected": false,
+      "level": 4,
+      "count": 910,
+      "parentId": "6232",
+      "name": "Addiction Disorder"
+    },
+    {
+      "score": 48556.07421875,
+      "selected": false,
+      "id": "5781",
+      "level": 1,
+      "parentId": "1",
+      "count": 909,
+      "name": "Food Manufacturing"
+    },
+    {
+      "parentId": "1",
+      "count": 1072,
+      "name": "Grains",
+      "selected": false,
+      "score": 48428,
+      "id": "137420",
+      "level": 3
+    },
+    {
+      "count": 3161,
+      "name": "ICT And Media",
+      "id": "726157",
+      "score": 48408.859375,
+      "selected": false,
+      "level": 0
+    },
+    {
+      "count": 822,
+      "parentId": "726497",
+      "name": "Marijuana",
+      "id": "517856",
+      "selected": false,
+      "score": 48330.77734375,
+      "level": 3
+    },
+    {
+      "selected": false,
+      "score": 48281.1796875,
+      "id": "663354",
+      "level": 2,
+      "parentId": "726467",
+      "count": 979,
+      "name": "Apparel"
+    }
+  ],
+  "hasMoreValues": true
+}

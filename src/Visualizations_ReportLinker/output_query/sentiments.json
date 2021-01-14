@@ -1,0 +1,25 @@
+{
+   "name" : "sentiment",
+   "count" : 3,
+   "hasMoreValues" : false,
+   "facets" : [
+      {
+         "id" : "positive",
+         "name" : "Positive",
+         "count" : 46843,
+         "selected" : false
+      },
+      {
+         "selected" : false,
+         "count" : 44188,
+         "name" : "Negative",
+         "id" : "negative"
+      },
+      {
+         "id" : "neutral",
+         "name" : "Neutral",
+         "count" : 39555,
+         "selected" : false
+      }
+   ]
+}

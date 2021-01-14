@@ -19,7 +19,7 @@ body {
     width: 70%;
     padding-bottom: 40%;
     vertical-align: top;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .svg-content {
@@ -51,7 +51,7 @@ body {
 }
 
 .axisY text {
-    fill: #687781
+    fill: #687781;
 }
 
 .axisX path {
@@ -63,7 +63,8 @@ body {
 }
 
 .axisX text {
-    fill: #687781
+    fill: #687781;
+    font-size: 14px;
 }
 
 .textAxis {

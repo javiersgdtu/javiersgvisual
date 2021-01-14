@@ -1,23 +1,177 @@
-function parserTrendData(t) { var a = d3.utcParse("%Y-%m-%dT%H:%M:%S.%f%Z"); return t.forEach((function(t) { t.key_as_string = a(t.key_as_string) })), t }
+function parserTrendData(data) {
+    var formatdate = d3.utcParse("%Y-%m-%dT%H:%M:%S.%f%Z")
 
-function drawTrendChart(t) { var a = 1200,
-        e = 20,
-        r = 100,
-        n = 40,
-        i = 5,
-        s = d3.select("#div-trend").attr("class", "svg-container").style("width", "80%").style("padding-bottom", "30%").append("svg").attr("preserveAspectRatio", "none").attr("viewBox", `0 0 ${a+r+i} ${400+e+n}`).attr("class", " svg-content").append("g").attr("transform", "translate(" + i + "," + e + ")"),
-        o = d3.select("#div-trend").append("div").attr("class", "mytooltip"),
-        d = d3.extent(t, t => t.doc_count),
-        l = d3.scaleLinear().domain(d).range([400, 0]),
-        c = d3.extent(t, t => t.key_as_string),
-        p = (c[1] - c[0]) / 864e5,
-        u = d3.scaleTime().domain(c).range([0, a]),
-        y = d3.area().curve(d3.curveMonotoneX).x(t => u(t.key_as_string)).y0(l(30)).y1(t => l(t.doc_count)),
-        v = d3.line().curve(d3.curveMonotoneX).x(t => u(t.key_as_string)).y(t => l(t.doc_count)),
-        g = s.append("path"),
-        k = s.append("path");
-    g.attr("fill", "#d5e4ffff").attr("stroke", "none").attr("d", y(t)), k.attr("fill", "none").attr("stroke", "#005AFF").attr("stroke-width", 2).attr("d", v(t)); for (var _, f = d3.timeFormat("%b"), m = d3.timeFormat("%b %d"), h = (_ = d[1], 50 * Math.ceil(_ / 50)), x = [], F = 0; F <= 3; F++) x.push(F * h / 4 + h / 4); var b = d3.axisBottom(u);
-    p > 60 ? b.tickFormat(f) : b.tickFormat(m); var w = d3.axisRight(l).tickValues(x).tickSize(a);
-    s.append("g").selectAll("circle").data(t).enter().append("circle").attr("cx", t => u(t.key_as_string)).attr("cy", t => l(t.doc_count)).attr("r", 4).attr("fill", "#005AFF").attr("stroke", "white").attr("stroke-width", 2).on("mouseover", (function(t, a) { d3.select(this).transition().duration(1e3).attr("fill", "#F9E254").attr("r", 6), o.transition().duration(200).style("visibility", "visible").style("left", t.layerX + 20 + "px").style("top", t.layerY - 30 + "px").text(`${m(a.key_as_string)}- Count: ${a.doc_count}`) })).on("mouseout", (function(t, a) { d3.select(this).transition().duration(200).attr("fill", "#005AFF").attr("r", 4), o.transition().duration(200).style("visibility", "hidden") }));
-    s.append("g").attr("class", "axisY").call(w).call(t => t.select(".domain").remove()).call(t => t.selectAll(".tick line").attr("stroke-opacity", .5).attr("stroke-dasharray", "2,2")).call(t => t.selectAll(".tick text").attr("x", 4).attr("dy", -4)), s.append("g").attr("class", "axisX").attr("transform", "translate(0, 400)").call(b) }
-d3.json(api).then(t => { drawTrendChart(parserTrendData(t.aggregations.hits_over_time.buckets)) }).catch(t => {});
+    data.forEach(function(d) {
+        d.doc_count = d.count
+        d.key_as_string = formatdate(d.name)
+    })
+    return data
+}
+
+d3.json("../output_query/hits_over_time.json") //Query Output
+    .then((data) => {
+
+        var trend_data = data.facets
+        var parser = parserTrendData(trend_data);
+
+        drawTrendChart(parser);
+    })
+    .catch((error) => {
+        console.log('error', error);
+    });
+
+function drawTrendChart(parser) {
+    var width = 1200;
+    var height = 400;
+
+    var margin = ({ top: 50, right: 100, bottom: 40, left: 5 })
+
+    var svg_trend = d3.select('#div-trend')
+        .attr("class", "svg-container")
+        .style("width", "80%")
+        .style("padding-bottom", "30%")
+        .append('svg')
+        .attr("preserveAspectRatio", "none")
+        .attr("viewBox", `0 0 ${(width+margin.right+margin.left)} ${(height+margin.top+margin.bottom)}`)
+        .attr("class", " svg-content")
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    // Tooltip
+    var tooltipTrend = d3.select("#div-trend").append("div")
+        .attr("class", "mytooltip")
+
+
+    var domainY = d3.extent(parser, (d) => d.doc_count);
+    var scaleY = d3.scaleLinear()
+        .domain(domainY)
+        .range([height, 0]);
+
+    var domainX = d3.extent(parser, (d) => d.key_as_string)
+    var domainXdiff = (domainX[1] - domainX[0]) / (1000 * 60 * 60 * 24);
+
+    var scaleX = d3.scaleTime()
+        .domain(domainX)
+        .range([0, width])
+
+    var area = d3.area()
+        .curve(d3.curveMonotoneX)
+        .x(d => scaleX(d.key_as_string))
+        .y0(scaleY(domainY[0]))
+        .y1(d => scaleY(d.doc_count));
+
+    var line = d3.line()
+        .curve(d3.curveMonotoneX)
+        .x(d => scaleX(d.key_as_string))
+        .y(d => scaleY(d.doc_count));
+
+
+    var pathArea = svg_trend.append('path');
+    var pathLine = svg_trend.append('path');
+
+
+    pathArea
+        .attr('fill', '#d5e4ffff')
+        .attr('stroke', 'none')
+        .attr('d', area(parser));
+
+    pathLine
+        .attr('fill', 'none')
+        .attr('stroke', '#005AFF')
+        .attr('stroke-width', 2)
+        .attr('d', line(parser));
+    var formatdate_months = d3.timeFormat("%b");
+    var formatdate_days = d3.timeFormat("%b %d");
+
+
+    var maxround = round50(domainY[1])
+    console.log(maxround)
+    var tickRange = [domainY[0]];
+    for (var i = 1; i <= 3; i++) {
+        tickRange.push((i * maxround / 4) + maxround / 4);
+    }
+    console.log(tickRange)
+
+    var axisX = d3.axisBottom(scaleX)
+
+    if (domainXdiff > 60) {
+        axisX.tickFormat(formatdate_months)
+    } else {
+        axisX.tickFormat(formatdate_days)
+    }
+
+    var axisY = d3.axisRight(scaleY).tickSize(width).tickValues(tickRange);
+
+    var circles = svg_trend.append("g").selectAll('circle')
+        .data(parser)
+        .enter()
+        .append('circle')
+        .attr('cx', (d) => scaleX(d.key_as_string))
+        .attr('cy', (d) => scaleY(d.doc_count))
+        .attr('r', 4)
+        .attr('fill', "#005AFF")
+        .attr('stroke', "white")
+        .attr('stroke-width', 2)
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+
+
+    // Y axis
+    svg_trend.append('g')
+        .attr('class', 'axisY')
+        .call(axisY)
+        .call(g => g.select(".domain").remove())
+        .call(g => g.selectAll(".tick line")
+            .attr("stroke-opacity", 0.5)
+            .attr("stroke-dasharray", "2,2"))
+        .call(g => g.selectAll(".tick text")
+            .attr("x", 4)
+            .attr("dy", -4));
+
+    //X axis
+    svg_trend.append('g')
+        .attr('class', 'axisX')
+        .attr('transform', `translate(0, ${height})`)
+        .call(axisX);
+
+    function handleMouseOver(event, d) {
+        console.log(event)
+        console.log(event.pageX)
+        console.log(event.pageY)
+
+        d3.select(this)
+            .transition()
+            .duration(1000)
+            .attr("fill", "#F9E254")
+            .attr("r", 6)
+
+        tooltipTrend.transition()
+            .duration(200)
+            .style("visibility", "visible")
+            .style("left", (event.layerX + 20) + "px")
+            .style("top", (event.layerY - 30) + "px")
+            .text(`${formatdate_days(d.key_as_string)}- Count: ${d.doc_count}`)
+
+    }
+
+    function handleMouseOut(event, d) {
+        d3.select(this)
+            .transition()
+            .duration(200)
+            .attr("fill", "#005AFF")
+            .attr("r", 4)
+
+
+        tooltipTrend.transition()
+            .duration(200)
+            .style("visibility", "hidden")
+
+    }
+
+    function round50(x) {
+        return Math.ceil(x / 50) * 50;
+    }
+
+
+};
