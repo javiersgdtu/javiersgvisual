@@ -1,12 +1,13 @@
+//Input Data formatting function.
 function parserBarData(data) {
 
     data = data.sort((a, b) => { return b.count - a.count; })
-    console.log(data)
     data = data.filter(function(d, i) {
         return i < 10
     })
 
     data.forEach(function(d) {
+
         d.key_id = d.id
         d.key_title = d.name
         d.doc_count = d.count
@@ -14,28 +15,26 @@ function parserBarData(data) {
     return data
 }
 
-d3.json("../output_query/industries.json") //Query Output
+d3.json("../output_query/industries.json") //Json extrack. Search API results.
     .then((data) => {
-        console.log(data)
+
         var sector_data = data.facets
-        console.log(sector_data)
-
         var parser = parserBarData(sector_data);
-        console.log(parser)
 
+        //console.log(parser) Data formatted
         drawBarChart(parser);
     })
     .catch((error) => {
         console.log('error', error);
     });
 
-
+//function to draw the Bar chart
 function drawBarChart(data) {
+    //capture Fired event
     document.addEventListener("dataviz.industrychart.click", e => console.log(e.detail), false);
 
     var height = 400;
     var width = 600;
-
     var margin = ({ top: 100, right: 100, bottom: 100, left: 50 })
 
     var svg_bar = d3.select('#div-bar')
@@ -70,7 +69,6 @@ function drawBarChart(data) {
 
 
     var yaxis = d3.axisLeft(yscale);
-
 
     var rect = svg_bar
         .selectAll('rect')
@@ -114,22 +112,16 @@ function drawBarChart(data) {
                 industry: d.key_id,
             },
         });
-
         document.dispatchEvent(evt);
 
     })
 
-
     rect
         .transition()
         .duration(1000)
-
-
-    .attr("width", function(d) {
-        return xscale(d.doc_count);
-    });
-
-
+        .attr("width", function(d) {
+            return xscale(d.doc_count);
+        });
 
     //Y axis
     svg_bar.append("g")
@@ -137,17 +129,20 @@ function drawBarChart(data) {
         .call(yaxis)
         .call(g => g.select(".domain").remove());
 
-
+    //Function to format the tooltip doc count value.
     function roundNumber(number) {
 
-        if (number.toString().length == 5) {
-            return "+" + (Math.round(number / 10000) * 10000).toString().substring(0, 2) + "k";
-        } else if (number.toString().length == 4) {
-            return "+" + (Math.round(number / 1000) * 1000).toString().substring(0, 1) + "K";
+        var nblength = number.toString().length;
+        var rounding = (10 ^ (nblength - 1));
 
-        } else if (number.toString().length == 3) {
+        if (nblength == 7) {
+            return "+" + (Math.round(number / rounding) * rounding).toString().substring(0, 1) + "M";
+        } else if ((nblength == 5) || (nblength == 6)) {
+            return "+" + (Math.round(number / rounding) * rounding).toString().substring(0, 2) + "k";
+        } else if (nblength == 4) {
+            return "+" + (Math.round(number / rounding) * rounding).toString().substring(0, 1) + "K";
+        } else if (nblength == 3) {
             return Math.round(number / 10) * 10;
-
         } else {
             return number
         }

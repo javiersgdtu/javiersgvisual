@@ -1,3 +1,4 @@
+//Input Data formatting function.
 function parserTrendData(data) {
     var formatdate = d3.utcParse("%Y-%m-%dT%H:%M:%S.%f%Z")
 
@@ -8,22 +9,22 @@ function parserTrendData(data) {
     return data
 }
 
-d3.json("../output_query/hits_over_time.json") //Query Output
+d3.json("../output_query/hits_over_time.json") //Json extrack. Search API results.
     .then((data) => {
-
         var trend_data = data.facets
         var parser = parserTrendData(trend_data);
 
+        //console.log(parser) Data formatted
         drawTrendChart(parser);
     })
     .catch((error) => {
         console.log('error', error);
     });
 
+//function to draw the Trend chart
 function drawTrendChart(parser) {
     var width = 1200;
     var height = 400;
-
     var margin = ({ top: 50, right: 100, bottom: 40, left: 5 })
 
     var svg_trend = d3.select('#div-trend')
@@ -41,7 +42,6 @@ function drawTrendChart(parser) {
     // Tooltip
     var tooltipTrend = d3.select("#div-trend").append("div")
         .attr("class", "mytooltip")
-
 
     var domainY = d3.extent(parser, (d) => d.doc_count);
     var scaleY = d3.scaleLinear()
@@ -81,20 +81,18 @@ function drawTrendChart(parser) {
         .attr('stroke', '#005AFF')
         .attr('stroke-width', 2)
         .attr('d', line(parser));
+
     var formatdate_months = d3.timeFormat("%b");
     var formatdate_days = d3.timeFormat("%b %d");
-
-
     var maxround = round50(domainY[1])
-    console.log(maxround)
     var tickRange = [domainY[0]];
+
     for (var i = 1; i <= 3; i++) {
-        tickRange.push((i * maxround / 4) + maxround / 4);
+        tickRange.push(round50((i * maxround / 4) + maxround / 4));
     }
-    console.log(tickRange)
 
     var axisX = d3.axisBottom(scaleX)
-
+    //Daily vs Monthly X axis format
     if (domainXdiff > 60) {
         axisX.tickFormat(formatdate_months)
     } else {
@@ -109,13 +107,12 @@ function drawTrendChart(parser) {
         .append('circle')
         .attr('cx', (d) => scaleX(d.key_as_string))
         .attr('cy', (d) => scaleY(d.doc_count))
-        .attr('r', 4)
+        .attr('r', 4) //To change the radius of the circles.
         .attr('fill', "#005AFF")
         .attr('stroke', "white")
         .attr('stroke-width', 2)
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
-
 
     // Y axis
     svg_trend.append('g')
@@ -136,9 +133,6 @@ function drawTrendChart(parser) {
         .call(axisX);
 
     function handleMouseOver(event, d) {
-        console.log(event)
-        console.log(event.pageX)
-        console.log(event.pageY)
 
         d3.select(this)
             .transition()

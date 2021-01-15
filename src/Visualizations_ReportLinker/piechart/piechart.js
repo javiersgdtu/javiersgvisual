@@ -1,3 +1,4 @@
+//Input Data formatting function.
 function parserPieData(data) {
 
     var f = d3.format(".1f");
@@ -12,28 +13,25 @@ function parserPieData(data) {
     return data;
 }
 
-d3.json("../output_query/sentiments.json") //Query Output
+d3.json("../output_query/sentiments.json") //Json extrack. Search API results.
     .then((data) => {
-        console.log(data)
         var sentiment_data = data.facets
-
         var parser = parserPieData(sentiment_data);
-        console.log(parser)
+        //console.log(parser) Data formatted
         drawPieChart(parser);
     })
     .catch((error) => {
         console.log('error', error);
     });
 
-
+//function to draw the Pie chart
 function drawPieChart(data) {
 
-    // document.addEventListener("dataviz.sentiment.click", e => console.log(e.detail), false); I haven fired any event here.
+    // document.addEventListener("dataviz.sentiment.click", e => console.log(e.detail), false); I haven fired any event in the pieChart.
 
     var width = 500;
     var height = 500;
     var ratio = d3.min([width, height]) / 2
-    console.log(ratio)
     var outerR = 10;
 
     var svg_pie = d3.select('#div-pie')
@@ -47,10 +45,8 @@ function drawPieChart(data) {
         .append("g")
         .attr("transform", "translate(" + (ratio + outerR + 5) + "," + (ratio + outerR + 5) + ")");
 
-    console.log(data)
     var pie = d3.pie().value(d => d.percentage);
     var dataPie = pie(data);
-    console.log(dataPie)
 
     var arc = d3.arc()
         .innerRadius(100)
@@ -104,15 +100,17 @@ function drawPieChart(data) {
         .append('text')
         .attr('x', (d) => {
             d.center = arc.centroid(d);
-            return d.center[0] - 10;
+            return d.center[0] - 10; //Center text X-pos in arc
         })
         .attr('y', (d) => {
-            return d.center[1];
+            return d.center[1]; //Center text Y-pos in arc
         })
-
     .attr("fill", d => scaleColor(d.data.key))
         .attr("font-weight", "bold")
+        //.attr("font-size", "26px") //In case you want to change the font size within Pie arcs
         .text(d => d.data.percentage + " %")
+        .style("pointer-events","none");
+
 
     //Add text html
     svg_pie.append("foreignObject")
@@ -120,6 +118,7 @@ function drawPieChart(data) {
         .attr("height", 500)
         .attr("x", -40)
         .attr("y", -50)
+        .style("pointer-events","none")
         .append("xhtml:span")
         .html("<p style='font-size:20px'><span style='color: #22DB8E;'>Positive</span></br> <span style='color: #3D4B57;'>Neutral</span></br> <span style='color: #E30806;'>  Negative</span></p>");
 

@@ -13,6 +13,9 @@ body {
     background-color: #E7EBED;
 }
 
+
+/*To handle resizability of charts' divs*/
+
 .svg-container {
     display: inline-block;
     position: relative;
@@ -29,6 +32,9 @@ body {
     left: 0;
 }
 
+
+/*Tooltip used accross Charts*/
+
 .mytooltip {
     position: absolute;
     pointer-events: none;
@@ -42,6 +48,9 @@ body {
     padding: 5px;
 }
 
+
+/* ASome axis formating*/
+
 .axisY path {
     stroke: #687781
 }
@@ -52,6 +61,7 @@ body {
 
 .axisY text {
     fill: #687781;
+    font-size: 11px;
 }
 
 .axisX path {
