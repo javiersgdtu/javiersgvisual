@@ -17,12 +17,15 @@
 
     <meta charset="utf-8">
     <title>Medical conditions at clinic</title>
-    <script type="text/javascript" src="../assets/js/d3.v4.min.js"></script>
+    <link rel="icon" href="../assets/img/js.ico" sizes="any" />
+    <link rel="stylesheet" href="../assets/css/slides.css" type="text/css" />
 
-</head>
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+   <script type="text/javascript" src="../assets/js/d3.v4.min.js"></script>
+   <style>
     body {
-        font: 10px sans-serif;
+        font: 10px "Roboto",sans-serif;
         background: transparent url("../assets/img/d3_back.jpg") no-repeat fixed center center;
         background-size: auto auto;
     }
@@ -92,13 +95,53 @@
     .wb-stl-special {
         position: relative;
         top: 20px;
-        left: 400px;
+        left: 30px;
+        font-size:16px;
+
     }
+    .divtext{
+        flex-shrink: 4; 
+        flex-basis:250px;
+        flex-grow: 1;
+        
+
+    }
+    .divgraph{
+        flex-shrink: 0; 
+        flex-grow: 1;
+
+
+    }
+    
+    .container {
+        /*Especifico como deseo que se situen los 2 div dentro del contenedor.*/
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width:96%
+
+    }
+    
+    @media  screen and (max-width: 600px) {
+    .divcontrol-next{
+        top:180px;
+    }
+  
+}
+
 </style>
 
+</head>
+
 <body>
+    <div class="divcontrol-next">
+        <a href="/src/clinic_map.html" class="next round">&#8250;</a>
+    </div>
+
+    <div id="selectdiv"></div>
+    <div class="container"></div>
     <script type="text/javascript">
-        var div = d3.select("body").append("div"),
+        var div = d3.select("#selectdiv"),
             margin = {
                 top: 20,
                 right: 20,
@@ -116,10 +159,22 @@
             height2 = 500 - margin2.top - margin2.bottom,
             parseDate = d3.timeParse("%Y-%m-%d"),
             FormatDate = d3.timeFormat("%B-%Y"),
-            svg = d3.select("body").append("svg").attr("width", width + margin.left + margin.right).attr("height",
-                height +
-                height2 + margin.top + margin.bottom + margin2.bottom).append("g").attr("transform", "translate(" +
+            svg = d3.select(".container")
+            .append("div")
+            .attr("class","divgraph")
+            .style("width", "80%")
+            .append("svg")
+            .attr("viewBox", [0, 0, width + margin.left + margin.right, height +
+                height2 + margin.top + margin.bottom + margin2.bottom
+            ]).append("g").attr("transform", "translate(" +
                 margin.left + "," + margin.top + ")");
+
+        /*.attr("width", width + margin.left + margin.right)
+        .attr("height",
+            height +
+            height2 + margin.top + margin.bottom + margin2.bottom)*/
+        ;
+
         svg.append("defs").append("clipPath").attr("id", "clip").append("rect").attr("width", width).attr("height",
             height);
         var x = d3.scaleTime().range([0, width]),
@@ -246,8 +301,8 @@
                         0).transition()
                     .duration(1E3).attr("d",
                         baseline);
-                d.select(".axis--x").transition().duration(1E3).call(xAxis);
-                d.select(".axis--y").transition().duration(1E3).call(yAxis);
+                d.select(".axis--x").transition().duration(1000).call(xAxis);
+                d.select(".axis--y").transition().duration(1000).call(yAxis);
                 svg.selectAll("circle").data(b[0].values).transition().duration(1E3).attr("cx",
                     function(a) {
                         return x(a.Date)
@@ -327,7 +382,7 @@
             }).attr("cy", function(a) {
                 return y(a.n)
             }).on("mouseover", function(a, b) {
-                d3.select(this).transition().duration(100).attr("r",
+                d3.select(this).transition().duration(1000).attr("r",
                     10).attr("fill", "orange").attr("stroke-dasharray", "10,3");
                 tooltip.transition().duration(200).style("opacity", .9);
                 tooltip.html(a.n + "<br/>patients. Date: " + FormatDate(a.Date)).style("left", d3.event
@@ -343,7 +398,7 @@
                 "translate(0," + height + ")").call(xAxis);
             d.append("text").attr("transform", "rotate(0)").attr("x", width - margin.right).attr("y", height +
                 margin
-                .bottom).style("font-size", "16px").style("font-family", "Karla").text("Date");
+                .bottom-10).style("font-size", "13px").text("Date");
             d.append("g").attr("class", "axis axis--y").call(yAxis);
             d.append("text").attr("transform", "rotate(-90)").attr("y", 12).attr("dy", ".71em").style(
                 "text-anchor",
@@ -359,13 +414,23 @@
                 "transform",
                 "translate(" + margin.left + "," + margin.top + ")").call(l)
         });
-        d3.select("body").append("div").attr("class", "wb-stl-special").append("text").text(
-            "Time Chart of Patients medical conditions");
-        d3.select("body").append("div").attr("class", "wb-stl-special").style("left", "180px").style("font-size",
-                "15px")
-            .append("text").text(
-                "Monitoring of medical conditions. Every condition has a different threshold. Above it, the condition is considered viral. Made with D3"
-            );
+
+        var legend = d3.select(".container")
+            .append("div")
+            .attr("class","divtext")
+
+        legend
+            .html(
+                "<p class='wb-stl-special'>Time Chart of Patients medical conditions.<br><br> <span style='font-size:12.5px;'> Monitoring of medical conditions. Every condition has a different threshold. Above it, the condition is considered viral. Made with D3.</span></p>");
+
+        /* d3.select("body")
+             .append("div")
+             .attr("class", "wb-stl-special")
+             */
+        /*append("text")
+            .style("left", "180px")
+            .style("font-size", "15px")*/
+          
     </script>
 </body>
 

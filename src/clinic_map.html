@@ -17,23 +17,44 @@
 
     <meta charset="utf-8">
     <title>Refugee Camp Clinic patients</title>
+    <link rel="icon" href="../assets/img/js.ico" sizes="any" />
+    <link rel="stylesheet" href="../assets/css/slides.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <script type="text/javascript" src="../assets/js/d3.v4.min.js"></script>
+    <style>
+      body {
+          font: 15px "Roboto",sans-serif;
+          background: transparent url("../assets/img/d3_back.jpg") no-repeat fixed center center;
+          background-size: auto auto;
+      }
+      
+      .textinfo {
+          font-size:18px;
+      }
 
+      @media screen and (max-width: 950px) {
+    .divcontrol-next{
+        top:20%;
+    }
+    .divcontrol-prev{
+        top:20%;
+    }  
+}
+  </style>
 </head>
-<style>
-    body {
-        font: 15px sans-serif;
-        background: transparent url("../assets/img/d3_back.jpg") no-repeat fixed center center;
-        background-size: auto auto;
-    }
-    
-    .wb-stl-special {
-        position: relative;
-        top: 20px;
-    }
-</style>
 
-<svg width=1200 height=900>
+<body>
+   <div class="divcontrol-prev">
+      <a href="/src/DateChangeBrush.html" class="previous round">&#8249;</a>
+    </div>
+
+   <div class="divcontrol-next">
+      <a href="/src/chord.html" class="next round">&#8250;</a>
+  </div>
+  
+
+   <div style="width:94%">
+<svg viewBox="0 0 1600 770">
 
    <g transform="translate(25,50) scale(0.35)" pointer-events="none">
       <polygon style="fill:#F9BA48;" points="144.771,185.543 81.638,200 125.724,152.552 128.571,171.429 		" />
@@ -829,6 +850,7 @@
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26572049px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
    </g>
 </svg>
+</div>
 <script type="text/javascript">
     var $jscomp = $jscomp || {};
     $jscomp.scope = {};
@@ -861,24 +883,30 @@
     };
     var svg = d3.select("body").select("svg"),
         y_leg = 700,
-        width_leg = 50;
+        width_leg = 50,
+        x_text=1100,
+        y_text=100;
+
+   var textinfo=d3.select("svg")
+   .append("g")
+   .attr("class","textinfo")
+   .attr("transform", "translate("+x_text+","+y_text+")");
+
     d3.selectAll("path").attr("text", 0);
     var array_vl = [],
         array_loc = [],
         i = 0;
     for (i = 0; i < d3.selectAll("path")._groups[0].length; i++) array_loc = [].concat($jscomp.arrayFromIterable(
         array_loc), [d3.selectAll("path")._groups[0][i].id]);
-    console.log(array_loc);
-    d3.csv("/assets/data/map.csv", function(a) {
+
+        d3.csv("/assets/data/map.csv", function(a) {
         a.value = +a.value;
         array_vl = [].concat($jscomp.arrayFromIterable(array_vl), [a.value]);
         d3.select("#" + a.location).attr("text", a.value)
     }, function(a, b) {
         if (a) throw a;
-        console.log(d3.selectAll("path"));
         var c = [],
             e = "#e6ff99 #c7e9b4 #7fcdbb #41b6c4 #1d91c0 #225ea8 #253494 #081d58".split(" ");
-        console.log(d3.max(array_vl));
         var f = d3.scaleQuantile().domain([0, 8, d3.max(array_vl)]).range(e);
         d3.selectAll("path").each(function(a) {
             c = [].concat($jscomp.arrayFromIterable(c), [d3.select(this).attr("text")])
@@ -886,7 +914,6 @@
         var d = svg.selectAll(".legend").data([0].concat(f.quantiles()), function(a) {
             return a
         });
-        console.log(b);
         d = d.enter().append("g").attr("class", "legend");
         d.append("rect").attr("transform", "translate(30,0)").attr("x", function(a, b) {
             return width_leg * b
@@ -899,35 +926,55 @@
             return width_leg *
                 b
         }).attr("y", y_leg + width_leg + 20);
-        svg.append("text").text("Heat map on patient visits").attr("font-family", "Arial").attr("font-weight",
-            "bold").attr("font-size", 30).attr("x", y_leg / 1.5).attr("y", 28);
-        svg.append("text").text("Total area = 11.125 km2").attr("font-family", "Arial").attr("font-size", 18).attr(
-            "x", y_leg + 230).attr("y", y_leg - width_leg - 30);
-        svg.append("text").text("V = Village + N = Neighbourhood").attr("font-family", "Arial").attr("font-size",
-            18).attr("x", y_leg + 200).attr("y", y_leg - width_leg);
-        svg.append("rect").attr("x",
-            y_leg + 200).attr("y", y_leg - width_leg + 30).attr("stroke", "black").attr("width", 70).attr(
+
+
+        svg.append("text").text("Heat map on patient visits").attr("font-weight",
+            "bold").attr("font-size", 30).attr("x", y_leg /1.1).attr("y", 28);
+
+   
+        svg.append("text").text("Visits Distribution by location at refugee camp").attr("x", width_leg).attr("y", y_leg - width_leg / 2);
+
+        textinfo.append("foreignObject").attr("width",450).attr("height",100).append("xhtml:span").html(
+        "The area represents a refugee camp. The heat map captures the number of patients checked in the clinics per living location.<span style='font-size:14px;color:#A9A9A9'> Made with D3 and Inkscape.</span> "
+    );
+
+        textinfo.append("text").text("Total number of visits: 2241")
+            .attr("x", 100).attr("y", 140);
+
+        textinfo.append("text").text("Total number of patients with location recorded: 1798").attr("y", 170);
+
+        textinfo.append("text").text("Total number of patients without location recorded: 425").attr("y", y_text*2);
+
+        textinfo.append("text").text("Total area = 11.125 km2").attr(
+            "x", 100).attr("y", 520);
+
+        textinfo.append("text").text("V = Village + N = Neighbourhood").attr("x", 100).attr("y", 550);
+
+        textinfo.append("rect").attr("x",
+        100).attr("y", 580).attr("stroke", "black").attr("width", 70).attr(
             "height", 30).attr("fill", "#ff8990");
-        svg.append("text").text("Settlement public spaces").attr("font-family", "Arial").attr("font-size", 16).attr(
-            "x", y_leg + 200 + 75).attr("y", y_leg);
-        svg.append("rect").attr("x", y_leg + 200).attr("y", y_leg - width_leg + 80).attr("stroke", "black").attr(
+        textinfo.append("rect").attr("x", 100).attr("y", 630).attr("stroke", "black").attr(
             "width", 70).attr("height", 30).attr("fill", "#feff89");
-        svg.append("text").text("Institutional blocks").attr("font-family", "Arial").attr("font-size",
-            16).attr("x", y_leg + 200 + 75).attr("y", y_leg + 50);
-        svg.append("text").text("Total number of visits: 2241").attr("font-family", "Arial").attr("font-size", 18)
-            .attr("x", 800).attr("y", 140);
-        svg.append("text").text("Total number of patients with location recorded: 1798").attr("font-family",
-            "Arial").attr("font-size", 18).attr("x", 700).attr("y", 170);
-        svg.append("text").text("Total number of patients without location recorded: 425").attr("font-family",
-            "Arial").attr("font-size", 18).attr("x", 700).attr("y", 200);
-        svg.append("text").text("Visits Distribution by location at refugee camp").attr("font-family",
-            "Arial").attr("x", width_leg).attr("y", y_leg - width_leg / 2);
+
+         textinfo.append("text").text("Settlement public spaces").attr("font-size", 16).attr(
+            "x", 175).attr("y", y_leg-y_text);
+         textinfo.append("text").text("Institutional blocks").attr("font-size",
+            16).attr("x", 175).attr("y", 650);
+
+       
         d3.selectAll("path").attr("fill", e[0]).on("mouseover", function() {
+         var ident=d3.select(this)._groups[0][0].id;
+         var patnumb=d3.select(this).attr("text");
             "unumed" != d3.select(this).attr("id") && (d3.select(this).attr("stroke", "red").attr(
-                    "stroke-width", 2), svg.append("text").attr("font-family", "Arial").attr("font-size", 20)
-                .attr("x", 800).attr("y", 100).attr("id", "id" + d3.select(this)._groups[0][0].id).text(d3
-                    .select(this)._groups[0][0].id + ": " + d3.select(this).attr("text") + " patients"))
-        }).on("mouseout", function() {
+                    "stroke-width", 2),
+                    
+                    textinfo.append("text").attr("font-size", 25)
+                .attr("x",100).attr("y", y_text*3.5).attr("id", "id" + ident).text(function(){
+                if((ident.startsWith("-",2)==true) )   {
+                return ident + ": " + patnumb + " patients"}
+                else{return ident.replace("_"," ")}}))
+      
+      }).on("mouseout", function() {
             d3.select(this).attr("stroke",
                 "none");
             d3.select("#id" + d3.select(this)._groups[0][0].id).remove()
@@ -935,9 +982,8 @@
             return f(c[b])
         })
     });
-    d3.select("body").append("div").attr("class", "wb-stl-special").append("text").text(
-        "The area represents a refugee camp. The heat map captures the number of patients checked in the clinics per living location. Made with D3 and Inkscape."
-    )
+    
+   
 </script>
 </body>
 

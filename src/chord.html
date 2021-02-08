@@ -17,29 +17,22 @@
 
     <meta charset="utf-8" />
     <title>Hospital flow</title>
+    <link rel="icon" href="../assets/img/js.ico" sizes="any" />
+    <link rel="stylesheet" href="../assets/css/slides.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../assets/js/d3.v4.min.js"></script>
+    <script src="../assets/js/underscore-min.js"></script>
+    <script src="../assets/js/gistfile1.js"></script>
 
     <style>
-        .wb-stl-special {
-            position: absolute;
-            top: 400px;
-            left: 800px;
-            max-width: 600px;
+
+body {
+            font: 10px Roboto,sans-serif;
+            background: transparent url("../assets/img/d3_back.jpg") no-repeat fixed center center;
+            background-size: auto auto;
         }
         
-        #tooltip {
-            color: white;
-            opacity: 0.9;
-            background: #333;
-            padding: 5px;
-            border: 1px solid lightgrey;
-            border-radius: 5px;
-            position: absolute;
-            z-index: 10;
-            visibility: hidden;
-            white-space: nowrap;
-            pointer-events: none;
-        }
         
         #circle circle {
             fill: none;
@@ -60,22 +53,45 @@
             display: none;
         }
         
-        body {
-            font: 15px sans-serif;
-            background: transparent url("../assets/img/d3_back.jpg") no-repeat fixed center center;
-            background-size: auto auto;
+        .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items:center;
+
+    }
+
+        .divgraph {
+        flex-shrink: 0; 
+        flex-grow: 2;
+        flex-basis:75%;
+        order:1;
+    }
+    .divtext {
+            position: relative;
+            font-size:14px;
+            /*top: 300px;
+            max-width: 500px;*/
+            flex-shrink: 4; 
+            flex-basis:250px;
+            flex-grow: 1;
+            order:2;
         }
+        @media screen and (max-width: 650px) {
+  
+    .divcontrol-prev{
+        top:10%;
+    }  
+}
     </style>
 </head>
 
 <body>
-    <h2 style="font-family:sans-serif;padding-right:520px; text-align:center">
-        Patient flow in hospital
-    </h2>
-
-    <script src="../assets/js/d3.v4.min.js"></script>
-    <script src="../assets/js/underscore-min.js"></script>
-    <script src="../assets/js/gistfile1.js"></script>
+    <div class="divcontrol-prev">
+        <a href="/src/clinic_map.html" class="previous round">&#8249;</a>
+      </div>
+    <div class="container">
+</div>
     <script>
         d3.csv("/assets/data/data_circ.csv", function(d, e) {
             var b = chordMpr(e);
@@ -102,15 +118,18 @@
                 .innerRadius(b)
                 .outerRadius(b + 20),
                 k = d3.ribbon().radius(b),
+                
                 f = d3
-                .select("body")
+                .select(".container")
+                .append("div")
+                .attr("class","divgraph")
                 .append("svg:svg")
-                .attr("width", 800)
-                .attr("height", 800)
-                .attr("viewBox", "0 0 980 1000")
+                //.attr("width", 800)
+                //.attr("height", 800)
+                .attr("viewBox", "-800 50 1600 900")
                 .append("svg:g")
                 .attr("id", "circle")
-                .attr("transform", "translate(" + 980 / 1.8 + ",500)")
+                .attr("transform", "translate(100,500)")
                 .datum(c(d));
             f.append("circle").attr("r", b + 20);
             var l = chordRdr(d, e),
@@ -177,13 +196,14 @@
                 })
                 .attr("d", k.radius(b));
         }
-        d3.select("body")
+        d3.select(".container")
             .append("div")
-            .attr("class", "wb-stl-special")
-            .style("font-size", "20px")
-            .text(
-                "This chord graph represents the different stages in which patients stay in a clinic. The width of the different flows represents the amount of patients going from one stage to another. Made with D3 "
+            .attr("class", "divtext")
+            .html(
+                "<span style='font-size:16px;'>Patient flow in hospital</span> <br><br><span font-size:12.5px;>This chord graph represents the different stages in which patients stay in a clinic. The width of the different flows represents the amount of patients going from one stage to another.</span><span style='font-size:14px;color:#A9A9A9'> Made with D3</span> "
             );
+
+
     </script>
 </body>
 

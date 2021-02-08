@@ -1,0 +1,38 @@
+.divcontrol-next{
+    position:absolute;
+    top:50%;
+    left:95%;
+    font-size:25px;
+}
+
+.divcontrol-prev{
+    position:absolute;
+    top:50%;
+    left:2%;
+    font-size:25px;
+}
+
+
+a {
+text-decoration: none;
+padding: 8px 16px;
+}
+
+a:hover {
+background-color: #413845;
+color: white;
+}
+
+.previous {
+background-color: #bea5ff;
+color: black;
+}
+
+.next {
+background-color: #bea5ff;
+color: black;
+}
+
+.round {
+border-radius: 50%;
+}
