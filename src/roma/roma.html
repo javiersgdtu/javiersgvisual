@@ -16,11 +16,11 @@
     <meta charset="utf-8">
     <title>Roma Poster</title>
     <link rel="icon" href="../../assets/img/js.ico" sizes="any" />
+    <script src="../../assets/js/d3.v4.min.js"></script>
+
 
 </head>
-<style>
-
-</style>
+<body>
 <svg viewBox="0 0 2000 1000">
     <filter id="filt1">
         <feGaussianBlur stdDeviation="2"></feGaussianBlur>
@@ -38,11 +38,10 @@
     <g id=backL></g>
     <g id=frontL></g>
 
-    <image id="image2" width="100%" height="100%" opacity=0 xlink:href="material\roma_layer.png"
+    <image id="image2" width="100%" height="100%" opacity=0 xlink:href="material\roma_layer_zip.png"
         clip-path="url(#front-layer)"></image>
 
 </svg>
-<script src="../../assets/js/d3.v4.min.js"></script>
 <script>
     function gridData(n_rows, n_col) {
         var data = new Array();
@@ -203,5 +202,5 @@
         d3.select(this).style("filter", "none")
     });
 </script>
-
+</body>
 </html>
