@@ -106,9 +106,9 @@ section#titlechart #description ol {
 }
 
 
-section.demo * {
-/*	font-size: 13px;*/
-}
+/*section.demo * {
+	font-size: 13px;
+}*/
 section.demo {
 	font-size: 0;
 	text-align: center;
