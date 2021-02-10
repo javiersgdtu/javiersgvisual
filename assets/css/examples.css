@@ -39,11 +39,11 @@
 #example-wrapper .scrollContent, #example-wrapper.horizontal .scrollContent {
 	font-size: 0;
 }
-#example-wrapper .scrollContent div {
+/*#example-wrapper .scrollContent div {
 	font-size: 13px;
 }
 #example-wrapper section {
-}
+}*/
 
 section#titlechart {
 	text-align: center;
@@ -107,7 +107,7 @@ section#titlechart #description ol {
 
 
 section.demo * {
-	font-size: 13px;
+/*	font-size: 13px;*/
 }
 section.demo {
 	font-size: 0;
